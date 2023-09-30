@@ -49,13 +49,24 @@ body {
   }
  
  #sidebar .nav li {
-    margin-bottom: 10px; /* Espaçamento inferior entre os itens */
-    font-size: large;
+    margin-bottom: 15px; /* Espaçamento inferior entre os itens */
+    font-size:large;
   }
 
 #sidebar .nav a{
-  background: none;
-  border-bottom: 1px solid #455A64;
+
   color: #CFD8DC;
+  text-decoration: none;
 }
+
+#sidebar .nav a:hover{
+    color: #ffffff;
+  }
+
+.divider {
+    border-top: 1px solid #c5c5c5; /* Cor e estilo da linha divisória */
+    margin: 20px 0; 
+    width: 85%;
+  }
+  
 
