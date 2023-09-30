@@ -310,7 +310,8 @@
       return ele;
     }
   }();
-  
+
+
   !function() {
     var data = [
       { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange', date: moment('2023-09-01') },
@@ -333,16 +334,44 @@
       { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green', date: moment('2023-09-15') },
       { eventName: 'Startup Weekend', calendar: 'Other', color: 'green', date: moment('2023-09-16') }
     ];
+
+    function adicionarNovoEvento(novoEvento) {
+      // Certifique-se de que o objeto novoEvento tenha a propriedade "date" como um objeto Moment.js
   
-    var newEvent = {
-      eventName: 'Meu Novo Evento',
-      calendar: 'Trabalho',
-      color: 'red',
-      date: moment('2023-09-29')
+      // Adicione o novo evento à matriz data
+      data.push(novoEvento);
+      console.log("\nadicionado\n")
+  
+      // Atualize o calendário (opcional, dependendo de como você deseja atualizar a exibição)
+      //calendar.draw();
+    }
+  
+    // Exemplo de um novo evento a ser adicionado
+    var novoEvento = {
+      eventName: 'Novo Evento',
+      calendar: 'Other',
+      color: 'green',
+      date: moment('2023-09-30')
     };
   
-    data.push(newEvent);
+    // Chame a função para adicionar o novo evento à matriz
+    adicionarNovoEvento(novoEvento);
+    adicionarNovoEvento(novoEvento);
+  
   
     var calendar = new Calendar('#calendar', data);
-  }();
+
+    function imprimirEventos() {
+      data.forEach(function(evento) {
+          console.log('Nome do Evento: ' + evento.eventName);
+          console.log('Calendário: ' + evento.calendar);
+          console.log('Cor: ' + evento.color);
+          console.log('Data: ' + evento.date.format('YYYY-MM-DD'));
+          console.log('-------------------------');
+      });
+  }
   
+  // Chame a função para imprimir os eventos
+  imprimirEventos();
+  
+  }();
