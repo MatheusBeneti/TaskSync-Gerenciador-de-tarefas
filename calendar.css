@@ -22,8 +22,9 @@
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
+    margin-top: 20px;
     height: 80vh;
     overflow: hidden;
   }
@@ -113,7 +114,7 @@
   .day {
     display: inline-block;
     width: 14.28%;
-    height: 10.9vh;
+    height: 9.6vh;
     padding: 10px;
     text-align: center;
     vertical-align: top;
