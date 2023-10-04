@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  background: #37474F;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #dad8d8;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav {
+    list-style: none; /* Remover marcadores de lista */
+  }
+ 
+ #sidebar .nav li {
+    margin-bottom: 15px; /* Espaçamento inferior entre os itens */
+    font-size:large;
+  }
+
+#sidebar .nav a{
+  color: #CFD8DC;
+  text-decoration: none;
+}
+
+#sidebar .nav a:hover{
+    color: #ffffff;
+  }
+
+.divider {
+    border-top: 1px solid #c5c5c5; /* Cor e estilo da linha divisória */
+    margin: 20px 0; 
+    width: 85%;
+  }
+  
+
