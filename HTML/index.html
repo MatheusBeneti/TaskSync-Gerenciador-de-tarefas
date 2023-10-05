@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/CSS/calendar.csS">
   <link rel="stylesheet" href="/CSS/sideBar.css">
   <link rel="stylesheet" href="/CSS/tasks.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/addTaskModal.css">
   <title>Document</title>
 </head>
 
@@ -85,9 +86,18 @@
       </div>
       <div id="calendar"></div>
     </div>
+    <div id="meuModal" class="modal">
+      <div class="modal-content">
+          <span class="fechar">&times;</span>
+          <h2>Insira a nova tarefa</h2>
+          <input type="text">
+      </div>
+    </div>
   </div>
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   <script src="/JS/calendar.js"></script>
+  <script src="/JS/addTask.js"></script>
 </body>
 
 </html>
