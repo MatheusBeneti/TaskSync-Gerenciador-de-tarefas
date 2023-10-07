@@ -2,18 +2,19 @@
 .modal {
     display: none;
     position: absolute;
-    margin-left: 200px;
+    position: absolute;
+    margin-left: 210px;
     top: 0;
     left: 0;
-    width: 90%;
+    width: calc(100% - 210px);
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.829);
+    background-color: rgba(61, 61, 61, 0.829);
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    background-color: #474747c4;
+    background-color: #e5e2e2c4;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
@@ -21,15 +22,7 @@
     height: 80%;
 }
 
-/* Estilos para o botão de fechar */
-.fechar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.fechar:hover {
-    color: red;
+#button-addTasks{
+    text-align: end;
+    margin-top: 20px;
 }

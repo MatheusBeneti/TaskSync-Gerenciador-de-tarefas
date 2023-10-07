@@ -9,7 +9,7 @@ body {
 /* Toggle Styles */
 
 #viewport {
-  padding-left: 250px;
+  padding-left: 210px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -25,11 +25,11 @@ body {
   width: 210px;
   height: 100%;
   margin-left: -250px;
-  background: #37474F;
+  background: #102c39;
 }
 
 #sidebar header {
-  background-color: #263238;
+  background-color: #096492;
   font-size: 20px;
   line-height: 52px;
   text-align: center;

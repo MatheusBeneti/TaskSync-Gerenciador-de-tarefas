@@ -10,8 +10,9 @@
     width: 95%;
     margin: 0 auto;
     margin-top: 20px;
-    height: 80vh;
+    height: 75vh;
     overflow: hidden;
+    border-radius: 10px;
   }
   
   .header {
@@ -57,11 +58,13 @@
   .month {
     /*overflow: hidden;*/
     opacity: 0;
+
   }
   
   .month.new {
     /*-webkit-animation: fadeIn 1s ease-out;*/
     opacity: 1;
+
   }
   
   .month.in.next {
@@ -159,7 +162,7 @@
   .details {
     position: relative;
     width: 100%;
-    height: 75px;
+    height: 95px;
     background: rgba(164, 164, 164, 1);
     margin-top: 5px;
     border-radius: 4px;
