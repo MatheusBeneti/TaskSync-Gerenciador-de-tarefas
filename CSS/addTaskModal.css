@@ -1,6 +1,6 @@
 /* Estilos para o modal */
 .modal {
-    display: flex;
+    display: none;
     position: absolute;
     margin-left: 200px;
     top: 0;
