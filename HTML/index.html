@@ -5,43 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>taskSync</title>
-    <link rel="stylesheet" href="/CSS/index.css">
     <link rel="stylesheet" href="/CSS/global.css">
 
 </head>
 
 <body class="centralize">
-    <form>
-        <div class="form-field">
-            <div><label>Email</label></div>
-            <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
-            <div class="error" id="email-required-error">Email é obrigatório</div>
-            <div class="error" id="email-invalid-error">Email é inválido</div>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Criar Conta</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use um email para criar a conta</span>
+                <input type="text" placeholder="Name" id="nomeReg" />
+                <input type="email" placeholder="Email" id="emailReg" />
+                <input type="password" placeholder="Password" id="passReg" />
+                <button id="btnCadastrar">Criar Conta</button>
+            </form>
         </div>
-        <div class="form-field">
-            <div><label>Senha</label></div>
-            <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()" />
-            <div class="error" id="password-required-error">Senha é obrigatória</div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Entrar</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>Ou use sua conta</span>
+                <input type="email" placeholder="Email" id="emailLog" />
+                <input type="password" placeholder="Senha" id="passLog" />
+                <a href="#">Esqueceu a senha?</a>
+                <button id="entrar">Entrar</button>
+            </form>
         </div>
-        <div>
-            <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()"
-                disabled="true">Recuperar senha</button>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Bem vindo de volta!</h1>
+                    <p>Para continuar no TaskSync entre com seus dados pessoais</p>
+                    <button class="ghost" id="signIn">Entrar</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Seja bem vindo!</h1>
+                    <p>Entre com seus dados pessoais e volte para o TaskSync</p>
+                    <button class="ghost" id="signUp">Criar Conta</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
-        </div>
-        <div>
-            <button type="button" class="outline" onclick="register()">Registrar</button>
-        </div>
-    </form>
+    </div>
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-<script src="firebase-init.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
 
-<script src="/JS/index.js"></script>
-<script src="/JS/validations.js"></script>
-<script src="/JS/loading.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+<script src="/JS/event-handlers.js"></script>
+
+<script type="module" src="/JS/firebase-init.js"></script>
+
+
 
 </html>
