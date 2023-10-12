@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>taskSync</title>
-    <link rel="stylesheet" href="/CSS/global.css">
+    
+    <!-- Importando a biblioteca do Firebase Authentication -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
 
+    <link rel="stylesheet" href="/CSS/global.css">
 </head>
 
 <body class="centralize">
@@ -21,7 +26,7 @@
                 <input type="text" placeholder="Name" id="nomeReg" />
                 <input type="email" placeholder="Email" id="emailReg" />
                 <input type="password" placeholder="Password" id="passReg" />
-                <button id="btnCadastrar">Criar Conta</button>
+                <button id="btnCadastrar" >Criar Conta</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -34,7 +39,7 @@
                 <input type="email" placeholder="Email" id="emailLog" />
                 <input type="password" placeholder="Senha" id="passLog" />
                 <a href="#">Esqueceu a senha?</a>
-                <button id="entrar">Entrar</button>
+                <button id="btnEntrar">Entrar</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -52,16 +57,11 @@
             </div>
         </div>
     </div>
+
+    <script type="module" src="/JS/firebase-config.js"></script>
+    <script type="module" src="/JS/index.js"></script>
+    <script src="/JS/button.js"></script>
+    
 </body>
-
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-<script src="/JS/event-handlers.js"></script>
-
-<script type="module" src="/JS/firebase-init.js"></script>
-
-
 
 </html>
