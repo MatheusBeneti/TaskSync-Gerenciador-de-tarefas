@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -16,3 +16,4 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebas
         export const app = initializeApp(firebaseConfig);
         export const auth = getAuth(app);
         export const db = getFirestore(app);
+        export const googleProvider = new GoogleAuthProvider();
