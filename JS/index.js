@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import { app, googleProvider } from "/JS/firebase-config.js";
 
 const auth = getAuth(app);
@@ -15,7 +15,6 @@ const nomeInput = document.getElementById('nomeReg');
 const emailInput = document.getElementById('emailReg');
 const passwordInput = document.getElementById('passReg');
 
-
 googleSignUpButton.addEventListener('click', () => {
     signInWithGoogle('signup');
 });
@@ -25,17 +24,48 @@ googleLoginButton.addEventListener('click', () => {
 });
 
 function signInWithGoogle(action) {
-    signInWithPopup(auth, googleProvider)
-        .then((result) => {
-            const user = result.user;
-            console.log('Usuário logado com sucesso usando o Google:', user);
-            
-            // Redirecionar para a página inicial após a autenticação bem-sucedida
-            window.location.href = "/HTML/home.html";
-        })
-        .catch((error) => {
-            console.error('Erro ao fazer login com o Google:', error);
-        });
+  signInWithPopup(auth, googleProvider)
+      .then((result) => {
+          const user = result.user;
+          const usersRef = collection(db, 'users');
+          const userQuery = query(usersRef, where('uid', '==', user.uid));
+
+          getDocs(userQuery)
+              .then((querySnapshot) => {
+                  if (querySnapshot.empty) {
+                      // O usuário não existe no Firestore, então adicionamos
+                      const newUser = {
+                          uid: user.uid,
+                          nome: user.displayName,
+                          email: user.email,
+                          // outras informações que você deseja armazenar, se disponíveis
+                      };
+
+                      addDoc(usersRef, newUser)
+                          .then(() => {
+                              console.log('Usuário registrado e adicionado à coleção "users".');
+                              if (action === 'signup') {
+                                  window.location.href = "/HTML/home.html";
+                              }
+                          })
+                          .catch((error) => {
+                              console.error('Erro ao adicionar usuário à coleção "users":', error);
+                          });
+                  } else {
+                      // O usuário já existe no Firestore, redirecione para a página inicial
+                      console.log('Usuário já existe na coleção "users".');
+                      if (action === 'login') {
+                          window.location.href = "/HTML/home.html";
+                      }
+                  }
+              })
+              .catch((error) => {
+                  console.error('Erro ao verificar a existência do usuário:', error);
+              });
+      })
+      .catch((error) => {
+          console.error('Erro ao fazer login com o Google:', error);
+      });
 }
 
 cadastrarButton.addEventListener('click', () => {
