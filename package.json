@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js "
+    "start": "node ./index.js ",
+    "test": "nodemon ./index.js localhost 3000"
   },
   "keywords": [],
   "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",

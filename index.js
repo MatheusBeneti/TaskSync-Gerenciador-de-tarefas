@@ -76,7 +76,6 @@ const path = require('path');
 const basePath = path.join(__dirname, 'templates');
 
 app.use(express.static('public'));
-app.use(express.static('controllers'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(basePath, 'login.html'));
