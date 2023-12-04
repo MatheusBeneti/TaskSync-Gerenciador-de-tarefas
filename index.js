@@ -75,15 +75,36 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 const basePath = path.join(__dirname, 'templates');
 
+const checkAuth = function(req, res, next){
+
+  req.authStatus = true;//implementar function para validar firebase
+  if(req.authStatus){
+    console.log("Está logado com sucesso");
+    next();
+  }
+  else{
+    console.log("Não está logado");
+    res.sendFile(basePath + '/login.html');
+    next();
+  }
+}
+
 app.use(express.static('public'));
 
+app.use(checkAuth);
+
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(basePath, 'login.html'));
+  res.sendFile(basePath + '/login.html');
 });
 
 app.get('/home', (req, res) => {
-  res.sendFile(path.join(basePath, 'home.html')); 
+  res.sendFile(basePath + '/home.html'); 
 });
+
+app.use(function(req, res, next) {
+  res.status(404).sendFile(basePath + '/404.html');
+})
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
