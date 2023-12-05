@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();  
 
-const TaskController = require('../controllers/TaskController');
+const userAccountController = require('../controllers/userAccountPageController');
 
 const path = require('path');
 const basePath = path.join(__dirname, '..', 'views');
@@ -16,9 +16,8 @@ router.get('/home', (req, res) => {
     res.sendFile(basePath + '/home.html'); 
 });
 
-router.get('/account', (req, res) => {
-    res.sendFile(basePath + '/userAccount.handlebars'); 
-});
+router.get('/account', userAccountController);
+
 
 module.exports = router;  
 
