@@ -8,7 +8,7 @@
     "start": "node ./index.js "
   },
   "keywords": [],
-  "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",
+  "author": "Matheus Beneti",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
