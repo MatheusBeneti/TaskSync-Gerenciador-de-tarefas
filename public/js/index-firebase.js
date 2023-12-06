@@ -24,50 +24,6 @@ googleLoginButton.addEventListener('click', () => {
 });
 
 function signInWithGoogle(action) {
-<<<<<<< HEAD:JS/index.js
-  signInWithPopup(auth, googleProvider)
-      .then((result) => {
-          const user = result.user;
-          const usersRef = collection(db, 'users');
-          const userQuery = query(usersRef, where('uid', '==', user.uid));
-
-          getDocs(userQuery)
-              .then((querySnapshot) => {
-                  if (querySnapshot.empty) {
-                      // O usuário não existe no Firestore, então adicionamos
-                      const newUser = {
-                          uid: user.uid,
-                          nome: user.displayName,
-                          email: user.email,
-                          // outras informações que você deseja armazenar, se disponíveis
-                      };
-
-                      addDoc(usersRef, newUser)
-                          .then(() => {
-                              console.log('Usuário registrado e adicionado à coleção "users".');
-                              if (action === 'signup') {
-                                  window.location.href = "/HTML/home.html";
-                              }
-                          })
-                          .catch((error) => {
-                              console.error('Erro ao adicionar usuário à coleção "users":', error);
-                          });
-                  } else {
-                      // O usuário já existe no Firestore, redirecione para a página inicial
-                      console.log('Usuário já existe na coleção "users".');
-                      if (action === 'login') {
-                          window.location.href = "/HTML/home.html";
-                      }
-                  }
-              })
-              .catch((error) => {
-                  console.error('Erro ao verificar a existência do usuário:', error);
-              });
-      })
-      .catch((error) => {
-          console.error('Erro ao fazer login com o Google:', error);
-      });
-=======
     signInWithPopup(auth, googleProvider)
         .then((result) => {
             const user = result.user;
@@ -110,7 +66,6 @@ function signInWithGoogle(action) {
         .catch((error) => {
             console.error('Erro ao fazer login com o Google:', error);
         });
->>>>>>> main:public/js/index-firebase.js
 }
 
 cadastrarButton.addEventListener('click', () => {
