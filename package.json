@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^7.1.2",
+    "firebase": "^10.7.1",
     "path": "^0.12.7"
   },
   "devDependencies": {

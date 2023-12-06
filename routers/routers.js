@@ -7,9 +7,6 @@ const loginController = require('../controllers/loginController');
 const checkAuth = require('../controllers/checkAuthController');
 const teamsController = require('../controllers/teamsController');
 
-//const path = require('path');
-//const basePath = path.join(__dirname, '..', 'views');
-
 router.get('/', loginController)
 router.get('/home',checkAuth, homeController);
 router.get('/teams',checkAuth, teamsController);
