@@ -23,7 +23,9 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-//criar um layout universal
-
+// criar um layout universal
+// excluir configuração e jogar pra conta
+// rota para pag equipe
+// organizar tarefa 1(FUNÇÕES BANCO) tiago para MVC
 
 
