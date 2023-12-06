@@ -1,0 +1,1 @@
+//Funçôes do banco aqui

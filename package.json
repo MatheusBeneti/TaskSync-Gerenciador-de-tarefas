@@ -1,0 +1,21 @@
+{
+  "name": "1_instalacao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon ./index.js localhost 3000",
+    "start": "node ./index.js "
+  },
+  "keywords": [],
+  "author": "Matheus Beneti",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^7.1.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
