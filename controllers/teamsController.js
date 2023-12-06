@@ -1,5 +1,4 @@
 
-    
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -9,14 +8,8 @@ async function main(req, res) {
     try {
         const sideBarContente = await fs.readFile(sideBar, 'utf8');
 
-        const user = {
-            name: 'John',
-            surname: 'Johnnom',
-        };
-
-        res.render('userAccount', {
+        res.render('teamsPage', {
             sideBar: sideBarContente,
-            user: user
         });
     } catch (erro) {
         console.error('Erro:', erro);
