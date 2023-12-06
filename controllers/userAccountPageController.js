@@ -4,7 +4,7 @@ const userAccountController = (req, res) => {
         name: 'John',
         surname: 'Johnnom',
     };
-
+    // função para obter dados do banco
     res.render('userAccount', { layout: 'userAccountLayout', user: user });
 };
 
