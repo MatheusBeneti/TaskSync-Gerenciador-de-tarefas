@@ -24,7 +24,7 @@ googleLoginButton.addEventListener('click', () => {
 });
 
 function signInWithGoogle(action) {
-<<<<<<< HEAD:JS/index.js
+     HEAD:JS/index.js
   signInWithPopup(auth, googleProvider)
       .then((result) => {
           const user = result.user;
@@ -67,7 +67,6 @@ function signInWithGoogle(action) {
       .catch((error) => {
           console.error('Erro ao fazer login com o Google:', error);
       });
-=======
     signInWithPopup(auth, googleProvider)
         .then((result) => {
             const user = result.user;
@@ -110,7 +109,6 @@ function signInWithGoogle(action) {
         .catch((error) => {
             console.error('Erro ao fazer login com o Google:', error);
         });
->>>>>>> main:public/js/index-firebase.js
 }
 
 cadastrarButton.addEventListener('click', () => {
