@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo nodemon ./index.js localhost 3000",
+    "test": "nodemon ./index.js localhost 3000",
     "start": "node ./index.js "
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^7.1.2",
+    "firebase-admin": "^12.0.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
