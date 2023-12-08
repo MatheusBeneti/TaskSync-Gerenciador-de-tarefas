@@ -9,14 +9,12 @@ module.exports = class UserController {
         const userData = req.body
 
         console.log(userData);
-        console.log(userData.name);
+        console.log(userData.email);
 
         console.log(userData.id);
 
         // auth user
-        req.session.userid = userData.uid
-
-        req.flash('message', 'Login realizado com sucesso!')
+        req.session.userid = userData.email
 
         req.session.save(() => {
             res.redirect('/home')

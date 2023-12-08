@@ -1,11 +1,18 @@
 
 const express = require('express');
 const app = express();
+const session = require('express-session');
 
 const port = process.env.PORT || 3000;
 
 const path = require('path');
 const basePath = path.join(__dirname, 'views');
+
+app.use(session({
+  secret: 'suaChaveSecretaAqui',
+  resave: false,
+  saveUninitialized: true
+}));
 
 const router = require('./routers/routers');
 
