@@ -13,7 +13,7 @@ router.post('/newAccount', loginController.validateNewAccount);
 
 router.get('/home', checkAuth, homeController);
 router.get('/teams', checkAuth, teamsController);
-router.get('/account', checkAuth, userAccountController);
+router.get('/account', userAccountController);
 
 
 module.exports = router;  
