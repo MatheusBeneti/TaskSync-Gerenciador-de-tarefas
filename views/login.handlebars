@@ -19,29 +19,29 @@
 <body class="centralize">
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="/">
+            <form action="/newAccount" method="post">
                 <h1>Criar Conta</h1>
                 <div class="social-container">
                     <button id="googleSignUpBtn" class="social"><i class="fab fa-google"></i></button>
                 </div>             
                 <span>ou use um email para criar a conta</span>
-                <input type="text" placeholder="Name" id="nomeReg" />
-                <input type="email" placeholder="Email" id="emailReg" />
-                <input type="password" placeholder="Password" id="passReg" />
-                <button id="btnCadastrar" >Criar Conta</button>
+                <input type="text" placeholder="Name" id="nomeReg" name="name" required/>
+                <input type="email" placeholder="Email" id="emailReg" name="email" required/>
+                <input type="password" placeholder="Password" id="passReg" name="password" required />
+                <button type="submit" id="btnCadastrar" >Criar Conta</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="/">
+            <form action="/login" method="post">
                 <h1>Entrar</h1>
                 <div class="social-container">
                     <button id="googleLoginBtn" class="social"><i class="fab fa-google"></i></button>
                 </div>               
                 <span>Ou use sua conta</span>
-                <input type="email" placeholder="Email" id="emailLog" />
-                <input type="password" placeholder="Senha" id="passLog" />
+                <input type="text" placeholder="Email" name="email" id="emailLog" required />
+                <input type="password" placeholder="Senha" id="passLog" name="password" required/>
                 <a href="#">Esqueceu a senha?</a>
-                <button id="btnEntrar">Entrar</button>
+                <button type="submit" id="btnEntrar">Entrar</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -54,15 +54,12 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Seja bem vindo!</h1>
                     <p>Entre com seus dados pessoais e volte para o TaskSync</p>
-                    <button class="ghost" id="signUp">Criar Conta</button>
+                    <button class="submit" id="signUp">Criar Conta</button>
                 </div>
             </div>
         </div>
     </div>
     
-
-    <script type="module" src="/js/firebase-config.js"></script>
-    <script type="module" src="/js/index-firebase.js"></script>
     <script src="/js/button.js"></script>
     
     

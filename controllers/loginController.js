@@ -1,16 +1,22 @@
-
-
+const homeController = require('../controllers/homeController');
 
 module.exports = class UserController {
     static login = (req, res) => {
-        res.render('loginTest', { layout: false });
+        res.render('login', { layout: false });
     }
-    
-    static post = (req, res) => {
+
+    static validateLogin = async (req, res) => {
         console.log(req.body);
-        console.log("passei por aqui");
-        //res.render('login', { layout: false });
+        console.log("efetuando login");
+        res.redirect('/home');
+    }
+
+    static validateNewAccount = async (req, res) => {
+        console.log(req.body);
+        console.log("validando nova conta");
+        res.redirect('/home');
     }
 }
+
 
 

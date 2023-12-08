@@ -8,7 +8,8 @@ const checkAuth = require('../controllers/checkAuthController');
 const teamsController = require('../controllers/teamsController');
 
 router.get('/', loginController.login);
-router.post('/', loginController.post);
+router.post('/login', loginController.validateLogin);
+router.post('/newAccount', loginController.validateNewAccount);
 
 router.get('/home',checkAuth, homeController);
 router.get('/teams',checkAuth, teamsController);
