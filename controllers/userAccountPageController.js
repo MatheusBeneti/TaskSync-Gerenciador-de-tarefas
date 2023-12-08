@@ -9,17 +9,18 @@ async function main(req, res) {
 
         const sideBarContent = await fs.readFile(sideBar, 'utf8');
 
-        const userRef = db.collection('users').doc('mC3nmfN3vP7cSeBB1Xy2');
-        const doc = await userRef.get()
+        const userRef = db.collection('users').doc('F3byfZV1WuiopqrgK2wL');
+        const doc = await userRef.get();
         if(!doc.exists){
             return res.sendStatus(400)
         }
 
-        res.status(200).send(doc.data())
-
+        //res.status(200).send(doc.data())
+   
         res.render('userAccount', {
             sideBar: sideBarContent,
-            user: null  // Se não há autenticação, definimos user como null
+            userName: doc.data().nome,
+            userEmail: doc.data().email // Se não há autenticação, definimos user como null
         });
     } catch (error) {
         console.error('Erro:', error);

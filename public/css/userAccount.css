@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .user-profile {
+
+    margin: 50px auto;
+    background-color: #242323;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-info {
+    margin-top: 20px;
+  }
+  
+  .user-email, .user-name {
+    margin-bottom: 10px;
+  }
+  
+  strong {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  span {
+    font-weight: normal;
+  }
+  
