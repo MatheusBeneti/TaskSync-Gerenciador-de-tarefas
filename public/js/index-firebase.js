@@ -1,6 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-import { app, googleProvider } from "/JS/firebase-config.js";
+import { app, googleProvider } from "../models/db.js";
 
 const auth = getAuth(app);
 const db = getFirestore(app);

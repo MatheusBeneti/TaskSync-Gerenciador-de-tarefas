@@ -9,7 +9,7 @@ async function main(req, res) {
 
         const sideBarContent = await fs.readFile(sideBar, 'utf8');
 
-        const userRef = db.collection('users').doc('mC3nmfN3vP7cSeBB1Xy2');
+        const userRef = db.collection('users').doc('1aRiP8SGsAPdWhXbNSH9');
         const doc = await userRef.get()
         if(!doc.exists){
             return res.sendStatus(400)
