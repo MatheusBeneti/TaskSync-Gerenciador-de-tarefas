@@ -6,13 +6,21 @@ module.exports = class UserController {
     }
 
     static validateLogin = async (req, res) => {
-        console.log(req.body);
+        const userData = req.body
+
+        console.log(userData);
+        console.log(userData.name);
+
         console.log("efetuando login");
         res.redirect('/home');
     }
 
     static validateNewAccount = async (req, res) => {
-        console.log(req.body);
+        const userData = req.body
+
+        console.log(userData);
+        console.log(userData.name);
+ 
         console.log("validando nova conta");
         res.redirect('/home');
     }
