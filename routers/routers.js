@@ -7,7 +7,9 @@ const loginController = require('../controllers/loginController');
 const checkAuth = require('../controllers/checkAuthController');
 const teamsController = require('../controllers/teamsController');
 
-router.get('/', loginController)
+router.get('/', loginController.login);
+router.post('/', loginController.post);
+
 router.get('/home',checkAuth, homeController);
 router.get('/teams',checkAuth, teamsController);
 router.get('/account',checkAuth, userAccountController);
