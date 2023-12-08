@@ -1,4 +1,4 @@
-const homeController = require('../controllers/homeController');
+
 
 module.exports = class UserController {
     static login = (req, res) => {
@@ -11,8 +11,17 @@ module.exports = class UserController {
         console.log(userData);
         console.log(userData.name);
 
-        console.log("efetuando login");
-        res.redirect('/home');
+        console.log(userData.id);
+
+        // auth user
+        req.session.userid = userData.uid
+
+        req.flash('message', 'Login realizado com sucesso!')
+
+        req.session.save(() => {
+            res.redirect('/home')
+        })
+
     }
 
     static validateNewAccount = async (req, res) => {
