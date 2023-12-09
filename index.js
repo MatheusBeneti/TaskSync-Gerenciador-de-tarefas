@@ -33,7 +33,8 @@ app.use(express.static('public'));
 
 
 app.use(router);
-app.use(function(req, res) {res.status(404).sendFile(basePath + '/404.html');})
+
+app.use(function(req, res) {res.status(404).sendFile(basePath + '/404.html');});
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
