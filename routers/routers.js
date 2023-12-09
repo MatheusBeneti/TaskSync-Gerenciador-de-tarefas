@@ -10,10 +10,11 @@ const teamsController = require('../controllers/teamsController');
 router.get('/', loginController.login);
 router.post('/login', loginController.validateLogin);
 router.post('/newAccount', loginController.validateNewAccount);
+router.post('/logout', loginController.logout);
 
 router.get('/home', checkAuth, homeController);
 router.get('/teams', checkAuth, teamsController);
-router.get('/account', userAccountController);
+router.get('/account', checkAuth, userAccountController);
 
 
 module.exports = router;  

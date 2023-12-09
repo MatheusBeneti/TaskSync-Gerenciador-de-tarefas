@@ -10,6 +10,8 @@ module.exports = class UserController {
     static validateLogin = async (req, res) => {
         const userData = req.body
 
+        
+
         // auth user
         req.session.userid = userData.email
         req.session.save(() => {
@@ -26,6 +28,12 @@ module.exports = class UserController {
         req.session.userid = userId;
         req.session.save(() => {
             res.redirect('/home')
+        })
+    }
+
+    static logout = (req, res) => {
+        req.session.destroy(() => {
+            res.redirect('/')
         })
     }
 }
