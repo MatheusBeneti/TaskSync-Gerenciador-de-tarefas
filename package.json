@@ -1,14 +1,14 @@
 {
-  "name": "1_instalacao",
-  "version": "1.0.0",
+  "name": "tasksync",
+  "version": "0.0.9",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./index.js localhost 3000",
+    "test": "echo nodemon ./index.js localhost 3000",
     "start": "node ./index.js "
   },
   "keywords": [],
-  "author": "Matheus Beneti",
+  "author": "Matheus Beneti, Tiago Reis",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
