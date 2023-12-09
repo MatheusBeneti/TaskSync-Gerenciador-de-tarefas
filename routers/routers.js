@@ -12,9 +12,9 @@ router.post('/login', loginController.validateLogin);
 router.post('/newAccount', loginController.validateNewAccount);
 router.get('/logout', loginController.logout);
 
-router.get('/home',checkAuth,  homeController);
-router.get('/teams',checkAuth,  teamsController);
-router.get('/account',checkAuth,  userAccountController);
+router.get('/home', checkAuth, homeController);
+router.get('/teams', checkAuth,  teamsController);
+router.get('/account', checkAuth,  userAccountController);
 
 
 module.exports = router;  

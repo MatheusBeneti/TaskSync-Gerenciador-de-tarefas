@@ -10,22 +10,52 @@ module.exports = class dbInteractions {
         return doc.data();
     }
 
+    async getUserDataAndCheckExistence(email, password) {
+      try {
+          // Consulta o banco de dados para encontrar o usuário com o e-mail fornecido
+          const userQuery = await db.collection('users').where('email', '==', email).get();
+  
+          if (userQuery.empty) {
+              // Usuário não encontrado com o e-mail fornecido
+              return { exists: false, userId: null };
+          }
+  
+          // Assume que o e-mail é único; obtém o primeiro documento retornado
+          const userDoc = userQuery.docs[0];
+  
+          // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
+          const userData = userDoc.data();
+
+          if (password == userData.password) {
+              // Senha válida, retorna os dados do usuário e o ID do usuário
+              return { exists: true, userId: userDoc.id, userData };
+          } else {
+              // Senha inválida
+              return { exists: false, userId: null };
+          }
+      } catch (error) {
+          console.error('Erro ao obter dados do usuário por e-mail e senha:', error);
+          return { exists: false, userId: null };
+      }
+  }
+  
+
     async addNewUser(name, email, password) {
         try {
-
-          const novoUsuario = {
-            nome: name,
-            email: email,
-            password: password,
-          };
-      
-          const docRef = await db.collection('users').add(novoUsuario);
-      
-          // Retorna o ID do documento recém-adicionado
-          return docRef.id;
+            const novoUsuario = {
+                nome: name,
+                email: email,
+                password: password,
+            };
+        
+            const docRef = await db.collection('users').add(novoUsuario);
+        
+            // Retorna o ID do documento recém-adicionado
+            return docRef.id;
         } catch (error) {
-          console.error('Erro ao adicionar usuário:', error);
-          throw error; 
+            console.error('Erro ao adicionar usuário:', error);
+            throw error; 
         }
-      }
-}
+    }
+};
+
