@@ -10,9 +10,22 @@ module.exports = class dbInteractions {
         return doc.data();
     }
 
-    async addNewUser(userData) {
-        const userRef = db.collection('users').doc();
-        await userRef.set(userData);
-        return userRef.id;
-    }
+    async addNewUser(name, email, password) {
+        try {
+
+          const novoUsuario = {
+            nome: name,
+            email: email,
+            password: password,
+          };
+      
+          const docRef = await db.collection('users').add(novoUsuario);
+      
+          // Retorna o ID do documento recém-adicionado
+          return docRef.id;
+        } catch (error) {
+          console.error('Erro ao adicionar usuário:', error);
+          throw error; 
+        }
+      }
 }

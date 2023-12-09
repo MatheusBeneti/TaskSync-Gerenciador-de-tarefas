@@ -4,14 +4,14 @@ const path = require('path');
 const DbInteractions = require('../models/dbInteractions.js');
 
 const sideBar = path.join(__dirname, '../views/sideBar.handlebars');
-const dbInteractions = new DbInteractions(); // Crie uma instância da classe
+const dbInteractions = new DbInteractions(); 
 
 async function main(req, res) {
     try {
 
         const sideBarContent = await fs.readFile(sideBar, 'utf8');
-
-        const user = await dbInteractions.getUserData('F3byfZV1WuiopqrgK2wL');
+        console.log(req.session.userid);
+        const user = await dbInteractions.getUserData(req.session.userid);
    
         res.render('userAccount', {
             sideBar: sideBarContent,
