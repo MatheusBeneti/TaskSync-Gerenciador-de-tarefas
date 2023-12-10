@@ -1,26 +1,23 @@
-const { db } = require('../models/db.js');
 const fs = require('fs').promises;
 const path = require('path');
-const DbInteractions = require('../models/dbInteractions.js');
+
 
 const sideBar = path.join(__dirname, '../views/sideBar.handlebars');
-const dbInteractions = new DbInteractions(); 
+const userAccount = path.join(__dirname, '../views/userAccount.handlebars');
+
+
 
 async function main(req, res) {
     try {
+        const sideBarContente = await fs.readFile(sideBar, 'utf8');
+        const accountContente = await fs.readFile(userAccount, 'utf8');
 
-        const sideBarContent = await fs.readFile(sideBar, 'utf8');
-        console.log(req.session.userid);
-        const user = await dbInteractions.getUserData(req.session.userid);
-   
         res.render('userAccount', {
-            sideBar: sideBarContent,
-            userName: user.nome,
-            userEmail: user.email 
+            sideBar: sideBarContente,
+            userAccount: accountContente,
         });
-
-    } catch (error) {
-        console.error('Erro:', error);
+    } catch (erro) {
+        console.error('Erro:', erro);
         res.status(500).send('Erro interno do servidor');
     }
 }

@@ -4,7 +4,7 @@ const router = express.Router();
 const userAccountController = require('../controllers/userAccountPageController');
 const homeController = require('../controllers/homeController');
 const loginController = require('../controllers/loginController');
-const {checkAuth} = require('../helpers/checkAuth');
+// const {checkAuth} = require('../helpers/checkAuth');
 const teamsController = require('../controllers/teamsController');
 
 router.get('/', loginController.login);
