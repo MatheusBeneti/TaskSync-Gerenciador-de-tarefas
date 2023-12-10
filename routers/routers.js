@@ -17,6 +17,7 @@ router.get('/teams', checkAuth, teamsController);
 router.get('/account', checkAuth, userAccountController);
 
 
+
 module.exports = router;  
 
 
