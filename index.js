@@ -39,9 +39,10 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-//usar bcrpyt para criptografar a senha
-//usar validações no front e no back para inserir dados no banco de dados
-//obter user.id na função de login
+// usar bcrpyt para criptografar a senha
+// usar validações no front e no back para inserir dados no banco de dados
+
+// Email tem que ser unico, implementar validações
 
 
 
