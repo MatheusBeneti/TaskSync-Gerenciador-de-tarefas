@@ -31,10 +31,10 @@ module.exports = class UserController {
         })
     }
 
-    static logout = (req, res) => {
+    static logout = async (req, res) => {
         req.session.destroy(() => {
-            res.redirect('/')
-        })
+            res.redirect('/');
+        });
     }
 }
 
