@@ -1,20 +1,84 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
 body {
-  overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+	overflow-x: hidden;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 }
 
 /* Toggle Styles */
 
 #viewport {
-  /* Remova o padding-left */
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+	/* Remova o padding-left */
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
 }
+
+body.dark-mode {
+	background: #000;
+	color: #000;
+}
+
+.dark-mode .navigation {
+	background: #1a1a1a;
+	/* Darker background color for the sidebar */
+}
+
+.dark-mode .navigation ul li:hover {
+	background: #2d2d2d;
+	/* Darker background color on hover */
+}
+
+.theme-switch {
+	position: relative;
+	width: 60px;
+	height: 30px;
+}
+
+.toggle-checkbox {
+	display: none;
+	/* Hide the default checkbox */
+}
+
+.toggle-label {
+    position: absolute;
+    top: 3px; /* Adjusted top position */
+    left: 3px; /* Adjusted left position */
+    width: 88%;
+    height: 88%;
+    background-color: #1f0724;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-indicator {
+    position: absolute;
+    top: 5px; /* Adjusted top position */
+    left: 5px; /* Adjusted left position */
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+
+
+.toggle-checkbox:checked+.toggle-label .toggle-indicator {
+	transform: translateX(30px);
+	/* Move the indicator to the right for dark mode */
+}
+
+.toggle-checkbox:checked+.toggle-label {
+	background-color: #8c12a1;
+	/* Color of the toggle button when checked */
+}
+
 
 
 /* Sidebar Styles */
@@ -23,54 +87,63 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat");
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Yatra One", sans-serif;
-/*   font-family: "Roboto", sans-serif; */
-/*   font-family: "Montserrat", sans-serif; */
-/*   font-family: "Poppins", sans-serif; */
+	/*   font-family: "Roboto", sans-serif; */
+	/*   font-family: "Montserrat", sans-serif; */
+	/*   font-family: "Poppins", sans-serif; */
 }
+
 body {
 	min-height: 100vh;
 	background: #150019;
 }
+
+
 .navigation {
-  position: fixed;
-  /* Ajuste o left para 0 para alinhar à esquerda */
-  left: 0;
-  width: 60px;
-  height: 100%;
-  background: #3e0748;
-  overflow: hidden;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  z-index: 1;
+	position: fixed;
+	flex-basis: 250px;
+	/* Ajuste o left para 0 para alinhar à esquerda */
+	left: 0;
+	width: 60px;
+	height: 100%;
+	background: #3e0748;
+	overflow: hidden;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-ms-transition: 0.5s;
+	-o-transition: 0.5s;
+	z-index: 1;
 }
 
 .navigation:hover,
 .navigation.active {
 	width: 300px;
 }
+
 .navigation ul {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-  padding-left: 0;
+	padding-left: 0;
 }
+
 .navigation ul li {
 	position: relative;
 	width: 100%;
 	list-style: none;
 }
+
 .navigation ul li:hover {
 	background: #ea1d63;
 }
+
 .navigation ul li a {
 	position: relative;
 	display: block;
@@ -78,6 +151,7 @@ body {
 	text-decoration: none;
 	color: #fff;
 }
+
 .navigation ul li a .icon {
 	position: relative;
 	display: block;
@@ -85,12 +159,14 @@ body {
 	height: 60px;
 	line-height: 60px;
 	text-align: center;
-  float: left;
-  margin-left: 0;
+	float: left;
+	margin-left: 0;
 }
+
 .navigation ul li a .icon i {
 	font-size: 24px;
 }
+
 .navigation ul li a .title {
 	position: relative;
 	display: block;
@@ -99,15 +175,16 @@ body {
 	line-height: 60px;
 	text-align: start;
 	white-space: nowrap;
-  float: left;
+	float: left;
 }
+
 .toggle {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  z-index: 0;
-  margin-left: -60px;
-  float: none;
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	z-index: 0;
+	margin-left: -30px;
+	float: none;
 }
 
 .toggle:hover {
@@ -120,7 +197,8 @@ body {
 }
 
 .toggle::before {
-	content: "\f0c9"; /*\10f52a*/
+	content: "\f0c9";
+	/*\10f52a*/
 	font-family: "Font Awesome 5 Pro";
 	position: absolute;
 	width: 100%;
@@ -129,7 +207,12 @@ body {
 	text-align: center;
 	font-size: 24px;
 	color: #fff;
+	margin-left: 10px;
 }
+
+/* body.sidebar-open .toggle {
+    margin-left: 200px; 
+} */
 
 .toggle.active::before {
 	content: "\f00d";
