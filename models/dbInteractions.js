@@ -37,9 +37,8 @@ module.exports = class dbInteractions {
           console.error('Erro ao obter dados do usuário por e-mail e senha:', error);
           return { exists: false, userId: null };
       }
-  }
+    }
   
-
     async addNewUser(name, email, password) {
         try {
             const novoUsuario = {
@@ -54,6 +53,28 @@ module.exports = class dbInteractions {
             return docRef.id;
         } catch (error) {
             console.error('Erro ao adicionar usuário:', error);
+            throw error; 
+        }
+    }
+
+    async addTask(userId, taskData, currentDate) {
+        try {
+            const task = {
+                userId: userId,
+                title: taskData.title,
+                date: currentDate,
+                dueDate: taskData.dueDate || null,
+                priority: taskData.priority,
+                description: taskData.description
+            };
+        
+            const docRef = await db.collection('tasks').add(task);
+        
+            // Retorna o ID do documento recém-adicionado
+            console.log('task added with id:', docRef.id);
+            return docRef.id;
+        } catch (error) {
+            console.error('Erro ao adicionar tarefa:', error);
             throw error; 
         }
     }
