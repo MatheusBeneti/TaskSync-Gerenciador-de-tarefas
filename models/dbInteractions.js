@@ -63,7 +63,7 @@ module.exports = class dbInteractions {
                 userId: userId,
                 title: taskData.title,
                 date: currentDate,
-                dueDate: taskData.dueDate || null,
+                dueDate: taskData.dueDate,
                 priority: taskData.priority,
                 description: taskData.description
             };
@@ -75,6 +75,21 @@ module.exports = class dbInteractions {
             return docRef.id;
         } catch (error) {
             console.error('Erro ao adicionar tarefa:', error);
+            throw error; 
+        }
+    }
+
+    async getTasks(userId) {
+        try {
+            const tasksQuery = await db.collection('tasks').where('userId', '==', userId).get();
+            const tasks = [];
+            tasksQuery.forEach(doc => {
+                tasks.push(doc.data());
+            });
+            console.log('tasks:', tasks);
+            return tasks;
+        } catch (error) {
+            console.error('Erro ao obter tarefas:', error);
             throw error; 
         }
     }

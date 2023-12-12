@@ -10,6 +10,7 @@ module.exports = class homePage  {
     static async addTask (req, res) {
         const currentDate = new Date();
         const taskData = req.body;
+        console.log(taskData.due);
         const userId = '12342' //req.session.userid;
 
         await dbInteractions.addTask(userId, taskData, currentDate);
@@ -20,9 +21,12 @@ module.exports = class homePage  {
     static async loadPage (req, res) {
         try {
             const sideBarContente = await fs.readFile(sideBar, 'utf8');
-    
+            
+            const userTasks =  await dbInteractions.getTasks('12342' /*req.session.userid*/);
+
             res.render('tasks', {
-                sideBar: sideBarContente
+                sideBar: sideBarContente,
+                tasks: userTasks
             });
         } catch (erro) {
             console.error('Erro:', erro);

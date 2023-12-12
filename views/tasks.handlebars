@@ -11,6 +11,7 @@
     </button>
 </div>
 <div id="calendar"></div>
+<div id="cards-container"></div>
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
@@ -39,7 +40,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Data de Vencimento</span>
             </div>
-            <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="DueDate">
+            <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="dueDate">
         </div>
 
         <div class="input-group mb-3">
@@ -71,3 +72,35 @@
         
     </div>
 </div>
+<script>
+
+        function renderCards(tasks) {
+            var cardsContainer = document.getElementById('cards-container');
+
+            tasks.forEach(function(task) {
+                var card = document.createElement('div');
+                card.classList.add('card');
+
+                var title = document.createElement('h2');
+                title.textContent = task.title;
+
+                var description = document.createElement('p');
+                description.textContent = task.description;
+
+                var priority = document.createElement('p');
+                priority.textContent = 'Priority: ' + task.priority;
+
+                card.appendChild(title);
+                card.appendChild(description);
+                card.appendChild(priority);
+
+                cardsContainer.appendChild(card);
+            });
+        }
+        var tasks = '{{{tasks}}}';// erro aqui
+        console.log(tasks);
+        renderCards(tasks);
+
+
+    // A variável "mensagem" é acessível no JavaScript do frontend
+</script>
