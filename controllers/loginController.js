@@ -3,7 +3,7 @@ const dbInteractions = new DbInteractions();
 
 
 module.exports = class UserController {
-    static login = (req, res) => {
+    static loadPage = (req, res) => {
         res.render('login', { layout: false });
     }
 

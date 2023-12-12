@@ -19,7 +19,3 @@ buttonCloseModal.addEventListener('click', ()=>{
     //implementar limpar todos o campos
 });
 
-buttonSendTask.addEventListener('click', ()=>{
-    alert('implement');
-    //implementar enviar informações pro calendario
-});

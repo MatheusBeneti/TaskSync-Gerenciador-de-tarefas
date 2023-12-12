@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .main {
     /* Light mode styles */
     background-color: #ffffff;
@@ -9,4 +10,10 @@
     /* Dark mode styles */
     background-color: #1a1a1a;
     color: #ffffff;
+=======
+#div-main{
+    background-color: rgb(201, 191, 191);
+    padding: 100px;
+    color: white;
+>>>>>>> main
 }

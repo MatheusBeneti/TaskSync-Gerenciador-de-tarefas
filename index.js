@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configura o Express.js para usar o Handlebars.js como mecanismo de visualização
 app.engine('handlebars', hbs.engine);
+
 app.set('view engine', 'handlebars');
 
 // Configura o Express.js para servir arquivos estáticos, como imagens, CSS e arquivos JavaScript
@@ -40,9 +41,10 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-//usar bcrpyt para criptografar a senha
-//usar validações no front e no back para inserir dados no banco de dados
-//obter user.id na função de login
+// usar bcrpyt para criptografar a senha
+// usar validações no front e no back para inserir dados no banco de dados
+
+// Email tem que ser unico, implementar validações
 
 
 

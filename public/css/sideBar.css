@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
 body {
+<<<<<<< HEAD
 	overflow-x: hidden;
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
+=======
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  background: #150019;
+>>>>>>> main
 }
 
 /* Toggle Styles */
@@ -98,12 +106,15 @@ body.dark-mode {
 	/*   font-family: "Poppins", sans-serif; */
 }
 
+<<<<<<< HEAD
 body {
 	min-height: 100vh;
 	background: #150019;
 }
 
 
+=======
+>>>>>>> main
 .navigation {
 	position: fixed;
 	flex-basis: 250px;

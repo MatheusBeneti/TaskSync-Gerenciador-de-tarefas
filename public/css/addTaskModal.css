@@ -27,3 +27,16 @@
     text-align: end;
     margin-top: 20px;
 }
+
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
