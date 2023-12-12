@@ -4,6 +4,8 @@ body {
   overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  min-height: 100vh;
+  background: #150019;
 }
 
 /* Toggle Styles */
@@ -32,10 +34,7 @@ body {
 /*   font-family: "Montserrat", sans-serif; */
 /*   font-family: "Poppins", sans-serif; */
 }
-body {
-	min-height: 100vh;
-	background: #150019;
-}
+
 .navigation {
   position: fixed;
   /* Ajuste o left para 0 para alinhar à esquerda */

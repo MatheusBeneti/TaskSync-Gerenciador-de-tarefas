@@ -20,13 +20,14 @@ module.exports = class homePage  {
 
     static async loadPage (req, res) {
         try {
-            const sideBarContente = await fs.readFile(sideBar, 'utf8');
+            const sideBarContent = await fs.readFile(sideBar, 'utf8');
             
             const userTasks =  await dbInteractions.getTasks('12342' /*req.session.userid*/);
 
+            // Renderizar a página, passando a string JSON como parte do contexto
             res.render('tasks', {
-                sideBar: sideBarContente,
-                tasks: userTasks
+               sideBar: sideBarContent,
+               userTasks: userTasks
             });
         } catch (erro) {
             console.error('Erro:', erro);

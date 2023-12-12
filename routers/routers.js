@@ -12,8 +12,8 @@ router.post('/login', loginController.validateLogin);
 router.post('/newAccount', loginController.validateNewAccount);
 router.get('/logout', loginController.logout);
 
-router.get('/home',  homeController.loadPage);
-router.post('/addTask',  homeController.addTask);
+router.get('/home', checkAuth, homeController.loadPage);
+router.post('/addTask', checkAuth, homeController.addTask);
 
 router.get('/teams', checkAuth,  teamsController);
 router.get('/account', checkAuth,  userAccountController);

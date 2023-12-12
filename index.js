@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configura o Express.js para usar o Handlebars.js como mecanismo de visualização
 app.engine('handlebars', hbs.engine);
+
 app.set('view engine', 'handlebars');
 
 // Configura o Express.js para servir arquivos estáticos, como imagens, CSS e arquivos JavaScript

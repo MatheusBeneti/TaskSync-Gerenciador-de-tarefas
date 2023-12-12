@@ -10,8 +10,22 @@
         Adicionar Tarefa
     </button>
 </div>
-<div id="calendar"></div>
-<div id="cards-container"></div>
+
+
+{{#each userTasks}}
+  <div class="tasks-container">
+    <p>Título: {{this.title}}</p>
+    <p>Data: {{this.date.toDate}}</p>
+    <p>Data de Vencimento: {{#if this.dueDate}}{{this.dueDate.toDate}}{{else}}N/A{{/if}}</p>
+    <p>Descrição: {{this.description}}</p>
+    <p>Prioridade: {{this.priority}}</p>
+    <p>User ID: {{this.userId}}</p>
+  </div>
+{{/each}}
+
+</div>
+
+
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
@@ -72,35 +86,5 @@
         
     </div>
 </div>
-<script>
-
-        function renderCards(tasks) {
-            var cardsContainer = document.getElementById('cards-container');
-
-            tasks.forEach(function(task) {
-                var card = document.createElement('div');
-                card.classList.add('card');
-
-                var title = document.createElement('h2');
-                title.textContent = task.title;
-
-                var description = document.createElement('p');
-                description.textContent = task.description;
-
-                var priority = document.createElement('p');
-                priority.textContent = 'Priority: ' + task.priority;
-
-                card.appendChild(title);
-                card.appendChild(description);
-                card.appendChild(priority);
-
-                cardsContainer.appendChild(card);
-            });
-        }
-        var tasks = '{{{tasks}}}';// erro aqui
-        console.log(tasks);
-        renderCards(tasks);
 
 
-    // A variável "mensagem" é acessível no JavaScript do frontend
-</script>
