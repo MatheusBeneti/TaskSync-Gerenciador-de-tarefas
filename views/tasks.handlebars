@@ -15,8 +15,8 @@
 {{#each userTasks}}
   <div class="tasks-container">
     <p>Título: {{this.title}}</p>
-    <p>Data: {{this.date.toDate}}</p>
-    <p>Data de Vencimento: {{#if this.dueDate}}{{this.dueDate.toDate}}{{else}}N/A{{/if}}</p>
+    <p>Data: {{this.date}}</p>
+    <p>Data de Vencimento: {{this.dueDate}}</p>
     <p>Descrição: {{this.description}}</p>
     <p>Prioridade: {{this.priority}}</p>
     <p>User ID: {{this.userId}}</p>

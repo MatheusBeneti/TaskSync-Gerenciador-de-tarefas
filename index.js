@@ -21,6 +21,7 @@ const hbs = exphbs.create({ /* configurações opcionais aqui */ });
 
 // Configura um middleware no Express.js para analisar dados no formato JSON do corpo das solicitações
 app.use(express.json());
+
 // Configura um middleware para analisar dados do corpo das solicitações no formato application/x-www-form-urlencoded.
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,10 +41,12 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-// usar bcrpyt para criptografar a senha
+// usar bcrpyt para criptografar a senha FEITO!
 // usar validações no front e no back para inserir dados no banco de dados
-
+// Servidor encerra quando acessa uma rota sem estar logado FEITO!
 // Email tem que ser unico, implementar validações
+// formatar data quando ela vem do firebase ou quando vai FEITO!
+// adicionar nova task sem preecher o modal buga
 
 
 

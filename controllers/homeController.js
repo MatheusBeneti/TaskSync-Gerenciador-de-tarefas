@@ -3,17 +3,31 @@ const path = require('path');
 const DbInteractions = require('../models/dbInteractions.js');
 const dbInteractions = new DbInteractions(); 
 
+const moment = require('moment');
+
+function formatarData(date) {
+  return moment(date).format('YYYY-MM-DD');
+}
+
+const dataAtual = new Date();
+const dataFormatada = formatarData(dataAtual);
+
 
 const sideBar = path.join(__dirname, '../views/sideBar.handlebars');
 
 module.exports = class homePage  {
+    
     static async addTask (req, res) {
         const currentDate = new Date();
+        const fomatedCurrentDate = formatarData(currentDate);
         const taskData = req.body;
-        console.log(taskData.due);
-        const userId = '12342' //req.session.userid;
 
-        await dbInteractions.addTask(userId, taskData, currentDate);
+        const userId = req.session.userid;
+
+        console.log('testeeeeeeeeeeeeeeeeeee');
+        console.log('data atual: ' + fomatedCurrentDate);
+
+        await dbInteractions.addTask(userId, taskData, fomatedCurrentDate);
 
         res.redirect('/home');
     }
@@ -21,8 +35,9 @@ module.exports = class homePage  {
     static async loadPage (req, res) {
         try {
             const sideBarContent = await fs.readFile(sideBar, 'utf8');
-            
-            const userTasks =  await dbInteractions.getTasks('12342' /*req.session.userid*/);
+            const userId = req.session.userid;
+
+            const userTasks =  await dbInteractions.getTasks(userId);
 
             // Renderizar a página, passando a string JSON como parte do contexto
             res.render('tasks', {

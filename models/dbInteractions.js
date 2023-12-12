@@ -10,31 +10,28 @@ module.exports = class dbInteractions {
         return doc.data();
     }
 
-    async getUserDataAndCheckExistence(email, password) {
+    async getUserIdAndPassword(email) {
       try {
-          // Consulta o banco de dados para encontrar o usuário com o e-mail fornecido
-          const userQuery = await db.collection('users').where('email', '==', email).get();
-  
-          if (userQuery.empty) {
-              // Usuário não encontrado com o e-mail fornecido
-              return { exists: false, userId: null };
-          }
-  
-          // Assume que o e-mail é único; obtém o primeiro documento retornado
-          const userDoc = userQuery.docs[0];
-  
-          // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
-          const userData = userDoc.data();
+            // Consulta o banco de dados para encontrar o usuário com o e-mail fornecido
+            const userQuery = await db.collection('users').where('email', '==', email).get();
+    
+            if (userQuery.empty) {
+                // Usuário não encontrado com o e-mail fornecido
+                return  null;
+            }
+    
+            // Assume que o e-mail é único; obtém o primeiro documento retornado
+            const userDoc = userQuery.docs[0];
+    
+            // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
+            const userData = userDoc.data();
 
-          if (password == userData.password) {
-              // Senha válida, retorna os dados do usuário e o ID do usuário
-              return { exists: true, userId: userDoc.id, userData };
-          } else {
-              // Senha inválida
-              return { exists: false, userId: null };
-          }
+
+            // Senha válida, retorna os dados do usuário e o ID do usuário
+            return { userId: userDoc.id, userPassword: userData.password };
+
       } catch (error) {
-          console.error('Erro ao obter dados do usuário por e-mail e senha:', error);
+          console.error('Erro ao obter dados do usuário por e-mail: ', error);
           return { exists: false, userId: null };
       }
     }
@@ -71,7 +68,6 @@ module.exports = class dbInteractions {
             const docRef = await db.collection('tasks').add(task);
         
             // Retorna o ID do documento recém-adicionado
-            console.log('task added with id:', docRef.id);
             return docRef.id;
         } catch (error) {
             console.error('Erro ao adicionar tarefa:', error);
@@ -86,7 +82,6 @@ module.exports = class dbInteractions {
             tasksQuery.forEach(doc => {
                 tasks.push(doc.data());
             });
-            console.log('tasks:', tasks);
             return tasks;
         } catch (error) {
             console.error('Erro ao obter tarefas:', error);

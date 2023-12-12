@@ -11,10 +11,12 @@
   "author": "Matheus Beneti, Tiago Reis",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.17.3",
     "firebase-admin": "^12.0.0",
+    "moment": "^2.29.4",
     "path": "^0.12.7"
   },
   "devDependencies": {
