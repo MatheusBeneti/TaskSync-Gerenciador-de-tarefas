@@ -1,29 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
 </head>
+
 <body>
 
-  <div class="user-profile">
-    <h1>User Profile</h1>
-    <div class="user-info">
-      <div class="user-email">
-        <strong>Email:</strong> <span id="email">{{userEmail}}</span>
+
+  <form class="form" id="form">
+    <div class="form-header">
+      <div class="title">
+        <h1>Perfil</h1>
       </div>
-      <div class="user-name">
-        <strong>Name:</strong> <span id="name">{{userName}}</span>
+      <label for="darkmode-toggle" class="dark-toggle"></label>
+      <input type="checkbox" class="darkmode-toggle">
+    </div>
+    <div class="input">
+      <div class="input-box">
+        <label for="name">Primeiro Nome</label>
+        <span id="name">{{userName}}</span>
+      </div>
+
+      <div class="input-box">
+        <label for="email">E-mail</label>
+        <span id="name">{{userEmail}}</span>
+      </div>
+
+      <div class="input-box">
+        <label for="number">Telefone</label>
+        <input id="number" type="tel" name="number" placeholder="(xx) xxxxx-xxxx">
       </div>
     </div>
-  </div>
+
+    <div class="input-box">
+      <label for="date">Data de nascimento</label>
+      <input id="date" type="date" name="date">
+    </div>
+
+
+    <div class="go-button">
+      <input class="hide" id="editar" type="button" value="Editar">
+      <input class="hide" id="limpar" type="reset" name="Limpar" value="Limpar">
+      <input class="hide" id="enviar" type="submit" value="Enviar">
+    </div>
+  </form>
 
 </body>
+
 </html>
-
-
-
-
-

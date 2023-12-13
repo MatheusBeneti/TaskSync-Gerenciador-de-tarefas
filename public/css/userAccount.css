@@ -1,29 +1,90 @@
+@import "divMain.css";
 
-    
+/* divMain.css */
 
-  .user-profile {
+.form {
+  padding: 20px;
+  background-color: purple;
+  margin-left: 20px;
+  border-radius: 15px;
+}
 
-    margin: 50px auto;
-    background-color: #242323;
-    padding: 20px;
-    border-radius: 2px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-info {
-    margin-top: 20px;
-  }
-  
-  .user-email, .user-name {
-    margin-bottom: 10px;
-  }
-  
-  strong {
-    margin-right: 5px;
-    font-weight: bold;
-  }
-  
-  span {
-    font-weight: normal;
-  }
-  
+.input-box label {
+  font-size: 1rem;
+  margin: 1px;
+  padding: 5px;
+  font-weight: 600;
+  color: #000000c0;
+}
+
+.form-header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.darkmode-toggle {
+  float: right;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.dark-toggle, .dark-toggle:after {
+  transition: background 0.3s, left 0.3s, transform 0.3s;
+}
+
+.dark-toggle {
+  width: 64.8px;
+  height: 25.92px;
+  position: relative;
+  display: block;
+  background: #ebebeb;
+  border-radius: 25.92px;
+  cursor: pointer;
+}
+
+.dark-toggle:after {
+  content: "";
+  width: 23.328px;
+  height: 23.328px;
+  position: absolute;
+  top: 1.296px;
+  left: 1.296px;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 23.328px;
+  box-shadow: 0px 0.648px 1.296px rgba(0, 0, 0, 0.2);
+}
+
+.darkmode-toggle:checked + .dark-toggle {
+  background: #242424;
+}
+
+.darkmode-toggle:checked + .dark-toggle:after {
+  left: calc(100% - 23.328px - 1.296px);
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+.input-box input, .input-box p {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+}
+
+#name {
+  font-weight: 200;
+  margin-left: 30px;
+}
+
+.go-button input {
+  border-radius: 20px;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 2px;
+}
