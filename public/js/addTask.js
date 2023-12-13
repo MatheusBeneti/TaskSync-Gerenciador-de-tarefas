@@ -19,3 +19,17 @@ buttonCloseModal.addEventListener('click', ()=>{
     //implementar limpar todos o campos
 });
 
+function validateForm() {
+    // Obtém os valores dos campos
+    var title = document.forms["taskForm"]["title"].value;
+    var description = document.forms["taskForm"]["description"].value;
+
+    // Verifica se os campos estão vazios
+    if (title === "" || description === "") {
+        alert("Por favor, preencha todos os campos antes de enviar o formulário.");
+    } else {
+        // Se os campos não estiverem vazios, você pode enviar o formulário ou realizar outras ações necessárias
+        document.getElementById("taskForm").submit();
+        
+    }
+}

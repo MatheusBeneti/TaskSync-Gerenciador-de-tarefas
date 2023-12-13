@@ -16,7 +16,6 @@ module.exports = class dbInteractions {
             const userQuery = await db.collection('users').where('email', '==', email).get();
     
             if (userQuery.empty) {
-                // Usuário não encontrado com o e-mail fornecido
                 return  null;
             }
     
