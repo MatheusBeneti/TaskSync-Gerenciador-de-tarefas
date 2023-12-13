@@ -9,10 +9,6 @@ function formatarData(date) {
   return moment(date).format('YYYY-MM-DD');
 }
 
-const dataAtual = new Date();
-const dataFormatada = formatarData(dataAtual);
-
-
 const sideBar = path.join(__dirname, '../views/sideBar.handlebars');
 
 module.exports = class homePage  {
@@ -23,9 +19,6 @@ module.exports = class homePage  {
         const taskData = req.body;
 
         const userId = req.session.userid;
-
-        console.log('testeeeeeeeeeeeeeeeeeee');
-        console.log('data atual: ' + fomatedCurrentDate);
 
         await dbInteractions.addTask(userId, taskData, fomatedCurrentDate);
 
@@ -39,7 +32,8 @@ module.exports = class homePage  {
 
             const userTasks =  await dbInteractions.getTasks(userId);
 
-            // Renderizar a página, passando a string JSON como parte do contexto
+            console.log("Tarefas e id ", userTasks);
+
             res.render('tasks', {
                sideBar: sideBarContent,
                userTasks: userTasks
@@ -50,6 +44,16 @@ module.exports = class homePage  {
         }
     }
 
+    static async editTask (req, res) {
+        const task = req.body;
+        console.log("essa é a task do html: ", task);
+        try {
+            console.log('entrou');
+            //implementar função para editar tarefa
+        }catch (error) {
+            console.error('Erro ao tentar alterar uma tarefa: ', error);
+        }
+    }
 }
 
 

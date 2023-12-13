@@ -79,12 +79,15 @@ module.exports = class dbInteractions {
             const tasksQuery = await db.collection('tasks').where('userId', '==', userId).get();
             const tasks = [];
             tasksQuery.forEach(doc => {
-                tasks.push(doc.data());
+                // Adiciona o id do documento como parte dos dados da tarefa
+                const taskData = doc.data();
+                taskData.taskId = doc.id;
+                tasks.push(taskData);
             });
             return tasks;
         } catch (error) {
             console.error('Erro ao obter tarefas:', error);
-            throw error; 
+            throw error;
         }
     }
 };
