@@ -43,3 +43,9 @@ button:hover {
     background-color: #0056b3;
     /* Cor de fundo alterada */
 }
+
+.tasks-container{
+    background-color: rgb(211, 20, 20);
+    padding: 10px;
+    margin: 10px;
+}
