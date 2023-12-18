@@ -91,6 +91,17 @@ module.exports = class dbInteractions {
         }
     }
 
+    async deleteTask(taskId) {
+        try {
+            const task = await db.collection('tasks').doc(taskId);
+            await task.delete();
+        } catch (error) {
+            console.error('Erro ao excluir a tarefa:', error);
+            throw error; 
+        }
+    }
+    
+
     async newTeam(){
         const team = {
             manager: userId,
