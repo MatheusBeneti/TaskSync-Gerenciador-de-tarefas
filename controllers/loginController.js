@@ -19,7 +19,7 @@ async function hashPassword(password) {
   
   async function verifyPassword(userPassword, storedHash) {
     try {
-      // Compare the user-provided password with the stored hash
+
       const result = await bcrypt.compare(userPassword, storedHash);
   
       return result;
@@ -39,12 +39,13 @@ module.exports = class UserController {
     
         try {
             const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
-            
+
             console.log('queryResult:', queryResult);
 
             if (queryResult == null) {
                 console.log('User not found');
                 return res.redirect('/');
+                
                 // Implementar mensagem de erro no front-end
             }else if(verifyPassword(req.body.password, queryResult.userPassword)) {;
 
@@ -66,14 +67,23 @@ module.exports = class UserController {
       
         try {
 
-          const hashedPassword = await hashPassword(userData.password);
-      
-          const userId = await dbInteractions.addNewUser(userData.name, userData.email, hashedPassword);
-      
-          req.session.userid = userId;
-          req.session.save(() => {
-            res.redirect('/home');
-          });
+          const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
+
+          if(queryResult != null) {
+            res.redirect('/');
+            console.log('User existe');
+            //implementar flash message
+          }
+          else{
+            const hashedPassword = await hashPassword(userData.password);
+        
+            const userId = await dbInteractions.addNewUser(userData.name, userData.email, hashedPassword);
+        
+            req.session.userid = userId;
+            req.session.save(() => {
+              res.redirect('/home');
+            });
+          }
         } catch (error) {
           console.error('Error:', error);
           res.status(500).send('Internal Server Error');
