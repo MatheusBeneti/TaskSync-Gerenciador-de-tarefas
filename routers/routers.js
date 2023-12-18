@@ -16,6 +16,7 @@ router.get('/logout', loginController.logout);
 router.get('/home', checkAuth, homeController.loadPage);
 router.post('/addTask', checkAuth, homeController.addTask);
 router.post('/editTask', checkAuth, homeController.editTask);
+router.post('/deleteTask', homeController.deleteTask);
 
 router.get('/teams', checkAuth,  teamsController);
 router.get('/account', checkAuth,  userAccountController);

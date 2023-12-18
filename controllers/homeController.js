@@ -54,6 +54,20 @@ module.exports = class homePage  {
             console.error('Erro ao tentar alterar uma tarefa: ', error);
         }
     }
+
+    static async deleteTask(req, res) {
+        try {
+            const taskId = req.body.taskId;
+    
+            await dbInteractions.deleteTask(taskId);
+    
+            res.status(200).redirect('/home');
+        } catch (error) {
+            console.error(error);
+            res.status(404).send('Erro ao excluir a tarefa');
+        }
+    }
+    
 }
 
 
