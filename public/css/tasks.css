@@ -25,9 +25,9 @@
 button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ea1d63;
     /* Cor de fundo */
-    color: #fff;
+    color: rgb(218, 218, 218);
     /* Cor do texto */
     border: none;
     border-radius: 5px;
@@ -40,12 +40,44 @@ button {
 
 /* Estilo quando o mouse passa por cima */
 button:hover {
-    background-color: #0056b3;
+    background-color: #ea1d6100;
     /* Cor de fundo alterada */
+    color: rgb(197, 197, 197);
+}
+
+svg{
+    fill: rgb(218, 218, 218);
 }
 
 .tasks-container{
-    background-color: rgb(211, 20, 20);
+    border-top: 2px solid rgb(19, 19, 19);
     padding: 10px;
     margin: 10px;
+    align-items: center;
+    background-color: #0f010f;
+    border-radius: 2px;
 }
+
+.tasks-container p{
+    margin: 5px;
+    color: rgb(218, 218, 218);
+}
+
+#task-header, #task-content, #task-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-buttons{
+    display: flex;
+}
+
+#edit-button{
+    background-color: transparent;
+    margin: 5px;
+    padding: 0;
+}
+
+
+

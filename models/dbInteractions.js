@@ -90,5 +90,17 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
+
+    async newTeam(){
+        const team = {
+            manager: userId,
+            members: usersId,
+        }
+
+        const user_teams = {
+            userId: userId,
+            teamId: teamId
+        }
+    }
 };
 
