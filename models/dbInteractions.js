@@ -22,11 +22,9 @@ module.exports = class dbInteractions {
             // Assume que o e-mail é único; obtém o primeiro documento retornado
             const userDoc = userQuery.docs[0];
     
-            // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
+
             const userData = userDoc.data();
 
-
-            // Senha válida, retorna os dados do usuário e o ID do usuário
             return { userId: userDoc.id, userPassword: userData.password };
 
       } catch (error) {

@@ -4,6 +4,7 @@ const DbInteractions = require('../models/dbInteractions.js');
 const dbInteractions = new DbInteractions(); 
 
 const moment = require('moment');
+const { get } = require('http');
 
 function formatarData(date) {
   return moment(date).format('YYYY-MM-DD');
@@ -31,6 +32,8 @@ module.exports = class homePage  {
             const userId = req.session.userid;
 
             const userTasks =  await dbInteractions.getTasks(userId);
+
+            
 
             console.log("Tarefas e id ", userTasks);
 
