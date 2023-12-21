@@ -1,14 +1,19 @@
 @import "divMain.css";
 
+
+.custom-margin-right {
+  margin-right: 110px;
+}
+
 .ui-w-80 {
   width : 80px !important;
   height: auto;
 }
 
 .btn-default {
-  border-color: rgba(24, 28, 33, 0.1);
-  background  : rgba(0, 0, 0, 0);
-  color       : #4E5155;
+  border-color: rgba(212, 14, 14, 1);
+  background  : transparent;
+  color       : rgba(212, 14, 14, 1);
 }
 
 label.btn {
