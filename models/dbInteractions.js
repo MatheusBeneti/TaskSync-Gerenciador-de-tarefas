@@ -11,28 +11,28 @@ module.exports = class dbInteractions {
     }
 
     async getUserIdAndPassword(email) {
-      try {
+        try {
             // Consulta o banco de dados para encontrar o usuário com o e-mail fornecido
             const userQuery = await db.collection('users').where('email', '==', email).get();
-    
+
             if (userQuery.empty) {
-                return  null;
+                return null;
             }
-    
+
             // Assume que o e-mail é único; obtém o primeiro documento retornado
             const userDoc = userQuery.docs[0];
-    
 
+            // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
             const userData = userDoc.data();
 
             return { userId: userDoc.id, userPassword: userData.password };
 
-      } catch (error) {
-          console.error('Erro ao obter dados do usuário por e-mail: ', error);
-          return { exists: false, userId: null };
-      }
+        } catch (error) {
+            console.error('Erro ao obter dados do usuário por e-mail: ', error);
+            return { exists: false, userId: null };
+        }
     }
-  
+
     async addNewUser(name, email, password) {
         try {
             const novoUsuario = {
@@ -40,14 +40,14 @@ module.exports = class dbInteractions {
                 email: email,
                 password: password,
             };
-        
+
             const docRef = await db.collection('users').add(novoUsuario);
-        
+
             // Retorna o ID do documento recém-adicionado
             return docRef.id;
         } catch (error) {
             console.error('Erro ao adicionar usuário:', error);
-            throw error; 
+            throw error;
         }
     }
 
@@ -61,14 +61,14 @@ module.exports = class dbInteractions {
                 priority: taskData.priority,
                 description: taskData.description
             };
-        
+
             const docRef = await db.collection('tasks').add(task);
-        
+
             // Retorna o ID do documento recém-adicionado
             return docRef.id;
         } catch (error) {
             console.error('Erro ao adicionar tarefa:', error);
-            throw error; 
+            throw error;
         }
     }
 
@@ -88,28 +88,13 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
-
-    async deleteTask(taskId) {
+    async updateUser(userId, updatedUser) {
         try {
-            const task = await db.collection('tasks').doc(taskId);
-            await task.delete();
+            const userRef = db.collection('users').doc(userId);
+            await userRef.update(updatedUser);
         } catch (error) {
-            console.error('Erro ao excluir a tarefa:', error);
-            throw error; 
-        }
-    }
-    
-
-    async newTeam(){
-        const team = {
-            manager: userId,
-            members: usersId,
-        }
-
-        const user_teams = {
-            userId: userId,
-            teamId: teamId
+            console.error('Error updating user:', error);
+            throw error;
         }
     }
 };
-

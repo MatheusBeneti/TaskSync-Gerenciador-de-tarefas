@@ -19,7 +19,18 @@ router.post('/editTask', checkAuth, homeController.editTask);
 router.post('/deleteTask', homeController.deleteTask);
 
 router.get('/teams', checkAuth,  teamsController);
-router.get('/account', checkAuth,  userAccountController);
+// Rota para renderizar a página de conta do usuário
+// router.get('/account', checkAuth, userAccountController);
+
+// Rota para a página principal
+router.route('/account')
+  .get(checkAuth, userAccountController.main)
+  .post(checkAuth, userAccountController.updateUserInformation);
+
+
+
+
+
 
 
 module.exports = router;  
