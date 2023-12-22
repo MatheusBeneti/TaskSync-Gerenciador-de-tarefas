@@ -35,31 +35,39 @@ module.exports = class UserController {
     }
 
     static validateLogin = async (req, res) => {
-        const userData = req.body;
-    
-        try {
-            const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
-
-            console.log('queryResult:', queryResult);
-
-            if (queryResult == null) {
-                console.log('User not found');
-                return res.redirect('/');
-                
-                // Implementar mensagem de erro no front-end
-            }else if(verifyPassword(req.body.password, queryResult.userPassword)) {;
-
-                req.session.userid = queryResult.userId;
-                req.session.save(() => {
-                    res.redirect('/home');
-                });
-            }
-    
-        } catch (error) {
-            console.error('Error during login validation:', error);
-            res.status(500).send('Internal Server Error');
-        }
-    }
+      const userData = req.body;
+  
+      try {
+          const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
+  
+          console.log('queryResult:', queryResult);
+  
+          if (!queryResult) {
+              console.log('User not found');
+              // Implementar mensagem de erro no front-end
+              return res.redirect('/');
+          }
+  
+          const passwordMatch = await verifyPassword(userData.password, queryResult.userPassword);
+  
+          if (passwordMatch) {
+              req.session.userid = queryResult.userId;
+              req.session.save(() => {
+                  res.redirect('/home');
+              });
+          } else {
+              console.log('Incorrect password');
+              // Implementar mensagem de erro no front-end
+              res.redirect('/');
+          }
+  
+      } catch (error) {
+          console.error('Error during login validation:', error);
+          res.status(500).send('Internal Server Error');
+      }
+  };
+  
+  
     
 
     static validateNewAccount = async (req, res) => {
