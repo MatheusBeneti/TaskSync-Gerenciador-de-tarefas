@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <title>User Profile</title>
 </head>
 
@@ -20,7 +21,7 @@
               href="#account-general">Geral</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Mudar
               senha</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Infomações
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Informações
               adicionais</a>
             <a class="list-group-item list-group-item-action" data-toggle="list"
               href="#account-notifications">Preferências</a>
@@ -30,38 +31,40 @@
           <div class="tab-content">
             <div class="tab-pane fade active show" id="account-general">
               <hr class="border-light m-0">
-              <div class="card-body">
-                <div class="form-group">
-                  <label class="form-label">Nome</label>
-                  <input type="text" class="form-control" value="{{userName}}">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">E-mail</label>
-                  <input type="text" class="form-control mb-1" value="{{userEmail}}">
-                  <div class="alert alert-warning mt-3">
-                    Seu email não foi confirmado. Por favor veja o inbox.<br>
-                    <a href="javascript:void(0)">Reenviar notificação</a>
+              <form id="userAccountForm" action="/account" method="POST">
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="nome" value="{{userName}}">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">E-mail</label>
+                    <input type="text" class="form-control mb-1" name="email" value="{{userEmail}}">
+                    <div class="alert alert-warning mt-3">
+                      Seu email não foi confirmado. Por favor veja o inbox.<br>
+                      <a href="javascript:void(0)">Reenviar notificação</a>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Empresa</label>
+                    <input id="empresaInput" type="text" class="form-control" name="empresa" value="{{userEmpresa}}">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Empresa</label>
-                  <input id="empresaInput" type="text" class="form-control">
-                </div>
-              </div>
             </div>
             <div class="tab-pane fade" id="account-change-password">
               <div class="card-body pb-2">
                 <div class="form-group">
                   <label class="form-label">Senha atual</label>
-                  <input type="password" class="form-control">
+                  <input type="password" class="form-control" name="senhaAtual">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Nova senha</label>
-                  <input type="password" class="form-control">
+                  <input type="password" class="form-control" name="novaSenha">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Repita a nova senha</label>
-                  <input type="password" class="form-control">
+                  <input type="password" class="form-control" name="repetirNovaSenha">
                 </div>
               </div>
             </div>
@@ -69,11 +72,11 @@
               <div class="card-body pb-2">
                 <div class="form-group">
                   <label class="form-label">Data de Nascimento</label>
-                  <input id="dataNascimentoInput" type="text" class="form-control" value="May 3, 1995">
+                  <input id="dataNascimentoInput" type="date" class="form-control" name="dataNascimento" value="{{userDataNascimento}}">
                 </div>
                 <div class="form-group">
                   <label class="form-label">País</label>
-                  <select id="paisInput" class="custom-select">
+                  <select id="paisInput" class="custom-select" name="pais">
                     <option>Alemanha</option>
                     <option selected>Brasil</option>
                     <option>Estados Unidos</option>
@@ -87,7 +90,8 @@
                 <h6 class="mb-4">Contato</h6>
                 <div class="form-group">
                   <label class="form-label">Celular</label>
-                  <input id="celularInput" type="text" class="form-control" value="+55 (**) *********">
+                  <input placeholder="+** (**) *****-****" id="celularInput" type="text" class="form-control"
+                    name="celular" value="{{userCelular}}">
                 </div>
               </div>
             </div>
@@ -101,7 +105,7 @@
                   <h6>Modo dark</h6>
                 </div>
                 <label class="switch">
-                  <input type="checkbox" id="themeSwitch">
+                  <input type="checkbox" id="themeSwitch" name="modoDark">
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -112,13 +116,13 @@
     </div>
   </div>
   <div class="text-right mt-3 custom-margin-right">
-    <button type="submit" class="btn btn-primary">Salvar mudanças</button>&nbsp;
+    <button id="salvarMudancasBtn" type="submit" class="btn btn-primary">Salvar mudanças</button>&nbsp;
     <button type="button" class="btn btn-default">Cancelar</button>
   </div>
+  </form>
   </div>
 
-  <script src="/public/js/userPage.js"></script>
-  <script src="/public/js/darkMode.js"></script>
+  <script src="/js/darkMode.js"></script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
