@@ -18,3 +18,26 @@ Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em constante desenvolvi
 
 - **Colaboração em Equipe:**
   - Além de gerenciar tarefas pessoais, os usuários podem criar e participar de equipes, onde as tarefas podem ser atribuídas a membros específicos. Isso facilita a colaboração e a distribuição eficiente de responsabilidades.
+
+### English Version:
+
+# Task Manager with Firebase (Study Project - In Development)
+
+Welcome to the Task Manager, a web application in constant development as part of a study project. This project offers an effective and intuitive way to track and organize daily tasks, incorporating advanced features to enhance team collaboration.
+
+## Key Features:
+
+- **User Authentication:**
+  - Users can create accounts and securely log in, ensuring a personalized experience and the ability to save their tasks.
+
+- **Firebase Storage:**
+  - We use Firebase as our real-time database, enabling persistence of user tasks and instant synchronization across all devices.
+
+- **Express and Node.js:**
+  - The application is built with the Express framework and Node.js, providing a robust and efficient environment for web application development.
+
+- **Handlebars:**
+  - The Handlebars template engine is used to create dynamic pages easily and efficiently, ensuring fast and flexible rendering.
+
+- **Team Collaboration:**
+  - In addition to managing personal tasks, users can create and join teams where tasks can be assigned to specific members. This facilitates collaboration and efficient distribution of responsibilities.
