@@ -100,15 +100,36 @@ module.exports = class dbInteractions {
     }
     
 
-    async newTeam(){
-        const team = {
-            manager: userId,
-            members: usersId,
+    async getUserFriends(){
+        try {
+            const friendsQuery = await db.collection('users').where('friends', '==', true).get();
+            const friends = [];
+            friendsQuery.forEach(doc => {
+                // Adiciona o id do documento como parte dos dados da tarefa
+                const friendData = doc.data();
+                friendData.friendId = doc.id;
+                friends.push(friendData);
+            });
+            return friends;
+        } catch (error) {
+            console.error('Erro ao obter amigos:', error);
+            throw error;
         }
+    }
 
-        const user_teams = {
-            userId: userId,
-            teamId: teamId
+    async addFriend(userId, friendId) {
+        try {
+            const userRef = db.collection('users').doc(userId);
+            const friendRef = db.collection('users').doc(friendId);
+            await userRef.update({
+                friends: true,
+            });
+            await friendRef.update({
+                friends: true,
+            });
+        } catch (error) {
+            console.error('Erro ao adicionar amigo:', error);
+            throw error; 
         }
     }
 };
