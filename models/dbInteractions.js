@@ -120,13 +120,17 @@ module.exports = class dbInteractions {
     async addFriend(userId, friendId) {
         try {
             const userRef = db.collection('users').doc(userId);
-            const friendRef = db.collection('users').doc(friendId);
-            await userRef.update({
-                friends: true,
-            });
-            await friendRef.update({
-                friends: true,
-            });
+            const doc = await userRef.get();
+            if (!doc.exists) {
+                return null;
+            }
+            const userData = doc.data();
+            if (userData.friends.includes(friendId)) {
+                return null;
+            }
+            userData.friends.push(friendId);
+            await userRef.update({ friends: userData.friends });
+            return true;
         } catch (error) {
             console.error('Erro ao adicionar amigo:', error);
             throw error; 
