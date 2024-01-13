@@ -1,0 +1,13 @@
+#container-searchUser{
+    padding: 10px;
+}
+
+#searchForm{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#searchForm input{
+    margin: 0;
+}
