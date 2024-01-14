@@ -21,6 +21,10 @@ module.exports = class homePage  {
 
         const userId = req.session.userid;
 
+        if(taskData.for == "you"){
+            taskData.for = userId;
+        }
+
         await dbInteractions.addTask(userId, taskData, fomatedCurrentDate);
 
         res.redirect('/home');
@@ -33,7 +37,11 @@ module.exports = class homePage  {
 
             const userTasks =  await dbInteractions.getTasks(userId);
 
-            
+            for (const task of userTasks){
+                if (task.created_by === task.created_for) {
+                    task.created_by = "you";
+                }
+            }
 
             console.log("Tarefas e id ", userTasks);
 

@@ -11,3 +11,36 @@
 #searchForm input{
     margin: 0;
 }
+
+.user-container svg{
+    fill: rgb(252, 252, 252);
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.user-container{
+
+    box-shadow: 5px 4px 1px 0px rgb(20, 20, 20);
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+    background-color: #1b2733; /* rgba(29,41,53,255), #dfe4dd; */
+    border-radius: 5px;
+    border: 1px solid rgba(44,54,66,255); /* Largura da borda e tipo de borda */
+}
+
+#user-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-container p{
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    color: rgb(224, 224, 224);
+    font-weight: 900;
+}
+

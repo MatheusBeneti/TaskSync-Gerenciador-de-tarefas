@@ -54,12 +54,13 @@ module.exports = class dbInteractions {
     async addTask(userId, taskData, currentDate) {
         try {
             const task = {
-                userId: userId,
                 title: taskData.title,
                 date: currentDate,
                 dueDate: taskData.dueDate,
                 priority: taskData.priority,
-                description: taskData.description
+                description: taskData.description,
+                created_for: taskData.for,
+                created_by: userId,
             };
         
             const docRef = await db.collection('tasks').add(task);
@@ -74,7 +75,7 @@ module.exports = class dbInteractions {
 
     async getTasks(userId) {
         try {
-            const tasksQuery = await db.collection('tasks').where('userId', '==', userId).get();
+            const tasksQuery = await db.collection('tasks').where('created_for', '==', userId).get();
             const tasks = [];
             tasksQuery.forEach(doc => {
                 // Adiciona o id do documento como parte dos dados da tarefa
