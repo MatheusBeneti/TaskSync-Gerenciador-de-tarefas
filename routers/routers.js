@@ -19,7 +19,7 @@ router.post('/editTask', checkAuth, homeController.editTask);
 router.post('/deleteTask', homeController.deleteTask);
 
 router.get('/friends', checkAuth, friendsController.loadPage, friendsController.loadFriends);
-router.post('/search', checkAuth)
+router.post('/search', checkAuth, friendsController.search);
 
 router.get('/account', checkAuth,  userAccountController);
 

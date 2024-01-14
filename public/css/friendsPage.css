@@ -44,3 +44,8 @@
     font-weight: 900;
 }
 
+.separator{
+    border: 1px solid #ea1d63;
+    width: 99%;
+    margin: 0 auto;
+}

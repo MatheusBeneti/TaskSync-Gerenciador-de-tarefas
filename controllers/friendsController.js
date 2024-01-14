@@ -11,14 +11,11 @@ module.exports = class friendsController {
         try{
             const friends = dbInteractions.getUserFriends;
             res.render('friendsPage', {
-                'friends': friends
+                friends: friends
             });
         }catch(error){
             error => console.error('Erro ao carregar amigos: ', error);
         };
-        
-        const friends = dbInteractions.getUserFriends;
-
     }
 
     static async loadPage(req, res) {
@@ -33,4 +30,23 @@ module.exports = class friendsController {
             res.status(500).send('Erro interno do servidor');
         }
     }
+
+    static async search(req, res) {
+        try {
+            console.log(req.body.search);
+            const sideBarContent = await fs.readFile(sideBar, 'utf8');
+            const userName = req.body.search;
+    
+            const usersFound = await dbInteractions.getUsersByName(userName);
+    
+            res.render('friendsPage', {
+                usersFound: usersFound,
+                sideBar: sideBarContent
+            });
+        } catch (error) {
+            console.error('Erro na busca de usuários:', error);
+            res.status(500).send('Erro na busca de usuários');
+        }
+    }
+    
 };

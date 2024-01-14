@@ -100,7 +100,6 @@ module.exports = class dbInteractions {
         }
     }
     
-
     async getUserFriends(){
         try {
             const friendsQuery = await db.collection('users').where('friends', '==', true).get();
@@ -117,6 +116,37 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
+
+    async getUsersByName(userName) {
+        try {
+            const usersQuery = await db.collection('users').where('nome', '==', userName).get();
+            
+            if (usersQuery.empty) {
+                // Caso não haja nenhum usuário com o nome fornecido
+                console.log('Nenhum usuário encontrado com o nome:', userName);
+                return [];
+            }
+    
+            // Se houver usuários com o nome fornecido, criar um novo objeto com informações específicas
+            const usersList = usersQuery.docs.map(doc => {
+                const userData = doc.data();
+                return {
+                    name: userData.nome,
+                    email: userData.email,
+                };
+            });
+            
+            console.log('usersList:', usersList);
+
+            return usersList;
+        } catch (error) {
+            console.error('Erro ao obter usuários:', error);
+            throw error;
+        }
+    }
+    
+    
+    
 
     async addFriend(userId, friendId) {
         try {
