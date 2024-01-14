@@ -1,15 +1,16 @@
-#div-main {
-    display: flex;
-    flex-direction: column;
-}
+
 
 #yourTasks-title {
-    margin: 0 auto;
+
     padding: 11px;
     text-align: center;
-    color: #ea1d63;
-    font-size: xx-large;
+    color: #e7e7e7;
     width: 100%;
+    font-weight: 700;
+ 
+    width: 103%;
+    margin: 0 auto;
+
 }
 
 #container-button-addTasks {
@@ -20,6 +21,7 @@
 
 #button-addTasks {
     margin: 10px ;
+    
 }
 
 button {
@@ -46,31 +48,36 @@ button:hover {
 }
 
 svg{
-    fill: rgb(218, 218, 218);
+	fill: white;
 }
 
-svg:hover{
-    fill: #ea1d63
+
+
+.tasks-container svg{
+    fill: #ea1d63;
+}
+
+.tasks-container svg:hover{
+    fill: #af0f44
 }
 
 .tasks-container{
-    border-top: 1px solid rgb(121, 121, 121);
+
     box-shadow: 5px 4px 1px 0px rgb(20, 20, 20);
     padding: 10px;
-    margin: 5px;
+    margin: 10px;
     align-items: center;
-    background-color: #1d1d1d;
-    border-radius: 1px;
+    background-color: #1b2733; /* rgba(29,41,53,255), #dfe4dd; */
+    border-radius: 5px;
+    border: 1px solid rgba(44,54,66,255); /* Largura da borda e tipo de borda */
 }
 
-.tasks-container:hover {
-    box-shadow: 4px 6px 1px 0px rgb(20, 20, 20);
-    transform: scale(1.02); /* Aumenta em 5% */
-}
+
 
 .tasks-container p{
     margin: 5px;
-    color: rgb(218, 218, 218);
+    color: rgb(224, 224, 224);
+    font-weight: 900
 }
 
 #task-header, #task-content, #task-footer{

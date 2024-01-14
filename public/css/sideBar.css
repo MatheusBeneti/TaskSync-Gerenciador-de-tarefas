@@ -42,7 +42,7 @@ body {
   left: 0;
   width: 60px;
   height: 100%;
-  background: #3e0748;
+  background: #161c28;
   overflow: hidden;
   transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -50,11 +50,12 @@ body {
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   z-index: 5;
+  border-right: 1px solid rgba(44,54,66,255)
 }
 
 .navigation:hover,
 .navigation.active {
-	width: 300px;
+	width: 200px;
 }
 .navigation ul {
 	position: absolute;
