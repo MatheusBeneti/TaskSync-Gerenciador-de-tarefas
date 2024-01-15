@@ -7,29 +7,37 @@ const DbInteractions = require('../models/dbInteractions.js');
 const dbInteractions = new DbInteractions(); 
 
 module.exports = class friendsController {
-    static async loadFriends(req, res) {  
-        try{
-            const friends = dbInteractions.getUserFriends;
-            res.render('friendsPage', {
-                friends: friends
-            });
-        }catch(error){
-            error => console.error('Erro ao carregar amigos: ', error);
-        };
-    }
 
     static async loadPage(req, res) {
         try {
             const sideBarContent = await fs.readFile(sideBar, 'utf8');
+            const userId = req.session.userid;
+    
+            console.log(userId);
+    
+            const friendsEmails = await dbInteractions.getUserFriendsEmail(userId);
+    
+            // Mapeia a lista de e-mails dos amigos para obter os dados dos usuários
+            const friendsDataPromises = friendsEmails.map(async (friendEmail) => {
+                return await dbInteractions.getUserDataByEmail(friendEmail);
+            });
+    
+            // Aguarda todas as promessas serem resolvidas para obter os dados completos dos amigos
+            const friendsData = await Promise.all(friendsDataPromises);
     
             res.render('friendsPage', {
                 sideBar: sideBarContent,
+                friends: friendsData
             });
-        } catch (erro) {
-            console.error('Erro:', erro);
+        } catch (error) {
+            console.error('Erro:', error);
             res.status(500).send('Erro interno do servidor');
         }
     }
+    
+    
+    
+    
 
     static async search(req, res) {
         try {
@@ -49,4 +57,12 @@ module.exports = class friendsController {
         }
     }
     
+    static async addFriend(req, res) {
+        const userEmailTarget = req.body.userEmail;
+        const userId = req.session.userid;
+
+        const result = dbInteractions.addFriend(userId, userEmailTarget);
+
+        res.redirect('/friends');
+    }
 };

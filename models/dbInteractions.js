@@ -100,22 +100,56 @@ module.exports = class dbInteractions {
         }
     }
     
-    async getUserFriends(){
+    async getUserFriendsEmail(userId) {
         try {
-            const friendsQuery = await db.collection('users').where('friends', '==', true).get();
-            const friends = [];
-            friendsQuery.forEach(doc => {
-                // Adiciona o id do documento como parte dos dados da tarefa
-                const friendData = doc.data();
-                friendData.friendId = doc.id;
-                friends.push(friendData);
-            });
-            return friends;
+            const userRef = db.collection('users').doc(userId);
+            const userDoc = await userRef.get();
+    
+            if (!userDoc.exists) {
+                console.log('Usuário não encontrado com o ID:', userId);
+                return [];
+            }
+    
+            const userData = userDoc.data();
+    
+            // Verifica se userData.friends existe e retorna a lista de amigos ou um array vazio
+            const friendsList = userData.friends || [];
+    
+            console.log('Lista de IDs de amigos do usuário:', friendsList);
+
+            console.log('friend list:', friendsList);
+            return friendsList;
         } catch (error) {
             console.error('Erro ao obter amigos:', error);
             throw error;
         }
     }
+    
+    async getUserDataByEmail(userEmail) {
+        try {
+            const usersQuery = await db.collection('users').where('email', '==', userEmail).get();
+    
+            if (usersQuery.empty) {
+                console.log('Nenhum usuário encontrado com o e-mail:', userEmail);
+                return null;
+            }
+    
+            // Assumindo que o e-mail é exclusivo, pois estamos usando '=='
+            const userData = usersQuery.docs[0].data();
+    
+            // Retorna apenas o nome e o email do usuário
+            const { nome, email } = userData;
+    
+            console.log('Dados do usuário encontrado:', { nome, email });
+            return { nome, email };
+        } catch (error) {
+            console.error('Erro ao obter dados do usuário por e-mail:', error);
+            throw error;
+        }
+    }
+    
+    
+    
 
     async getUsersByName(userName) {
         try {
@@ -145,27 +179,41 @@ module.exports = class dbInteractions {
         }
     }
     
-    
-    
-
     async addFriend(userId, friendId) {
+        const userRef = db.collection('users').doc(userId);
+    
         try {
-            const userRef = db.collection('users').doc(userId);
-            const doc = await userRef.get();
-            if (!doc.exists) {
-                return null;
-            }
-            const userData = doc.data();
-            if (userData.friends.includes(friendId)) {
-                return null;
-            }
-            userData.friends.push(friendId);
-            await userRef.update({ friends: userData.friends });
+            await db.runTransaction(async (transaction) => {
+                const doc = await transaction.get(userRef);
+    
+                if (!doc.exists) {
+                    return null;
+                }
+    
+                const userData = doc.data();
+    
+                // Verifica se userData.friends existe e inicializa se necessário
+                if (!userData.friends) {
+                    userData.friends = [];
+                }
+    
+                if (userData.friends.includes(friendId)) {
+                    return null; // Já é amigo, nada a fazer
+                }
+    
+                userData.friends.push(friendId);
+                transaction.update(userRef, { friends: userData.friends });
+    
+                return true;
+            });
+    
             return true;
         } catch (error) {
             console.error('Erro ao adicionar amigo:', error);
-            throw error; 
+            throw error;
         }
     }
+    
+    
 };
 
