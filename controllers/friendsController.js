@@ -35,10 +35,6 @@ module.exports = class friendsController {
         }
     }
     
-    
-    
-    
-
     static async search(req, res) {
         try {
             console.log(req.body.search);
@@ -61,7 +57,7 @@ module.exports = class friendsController {
         const userEmailTarget = req.body.userEmail;
         const userId = req.session.userid;
 
-        const result = dbInteractions.addFriend(userId, userEmailTarget);
+        dbInteractions.addFriend(userId, userEmailTarget);
 
         res.redirect('/friends');
     }
