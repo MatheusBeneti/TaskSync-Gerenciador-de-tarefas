@@ -148,10 +148,36 @@ module.exports = class dbInteractions {
         }
     }
     
-    async deleteFriend(userId, friendEmail) {
-
+    async removeFriend(userId, friendId) {
+        const userRef = db.collection('users').doc(userId);
+    
+        try {
+            const userDoc = await userRef.get();
+    
+            if (!userDoc.exists) {
+                return null; // Usuário não encontrado
+            }
+    
+            const userData = userDoc.data();
+    
+    
+            // Remove o friendId da lista de amigos
+            userData.friends = userData.friends.filter(id => id !== friendId);
+    
+            // Atualiza o documento sem a necessidade de transação
+            await userRef.update({ friends: userData.friends });
+    
+            const updatedUserDoc = await userRef.get();
+            const updatedUserData = updatedUserDoc.data();
+            console.log("userData updated: ", updatedUserData);
+    
+            return true;
+        } catch (error) {
+            console.error('Erro ao remover amigo:', error);
+            throw error;
+        }
     }
-
+ 
     async getUsersByName(userName) {
         try {
             const usersQuery = await db.collection('users').where('nome', '==', userName).get();
@@ -230,6 +256,23 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
+
+    async getUserNameById(userId) {
+        try {
+            const userDoc = await db.collection('users').doc(userId).get();
+    
+            if (userDoc.exists) {
+                const userData = userDoc.data();
+                return userData.nome; 
+            } else {
+                return null; 
+            }
+        } catch (error) {
+            console.error('Erro ao obter o nome do usuário por ID:', error);
+            throw error;
+        }
+    }
+    
     
 };
 

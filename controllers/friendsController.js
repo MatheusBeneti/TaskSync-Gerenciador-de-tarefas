@@ -82,14 +82,16 @@ module.exports = class friendsController {
             }
     
             // Excluir o amigo
-            const deletionResult = await dbInteractions.deleteFriend(userId, friendId);
-    
+            const deletionResult = await dbInteractions.removeFriend(userId, friendId);
+            
+            
+
             if (!deletionResult) {
                 return res.status(404).json({ error: 'Falha ao excluir o amigo.' });
             }
     
             // Amigo excluído com sucesso
-            res.status(200).json({ success: true, message: 'Amigo excluído com sucesso.' });
+            res.redirect('/friends');
         } catch (error) {
             console.error('Erro ao excluir amigo:', error);
             res.status(500).json({ error: 'Erro interno do servidor' });
