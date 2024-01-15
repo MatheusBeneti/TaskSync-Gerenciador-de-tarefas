@@ -272,7 +272,5 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
-    
-    
 };
 
