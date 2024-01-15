@@ -48,6 +48,7 @@ app.listen(port, () => {
 // formatar data quando ela vem do firebase ou quando vai FEITO!
 // adicionar nova task sem preecher o modal buga 
 // Adicionar modal para editar task
+// implementar enviar tarefa
 
 
 

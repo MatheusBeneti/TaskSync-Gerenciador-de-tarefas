@@ -1,0 +1,78 @@
+<h2 id="yourTasks-title">Amigos</h2>
+<div id="container-searchUser">
+
+    <form id="searchForm" action="/search" method="post">
+        <div class="input-group mb-3">
+            <input type="text" id="search" name="search" type="text" class="form-control"
+                placeholder="Digite o nome do usuário..." aria-label="Recipient's username"
+                aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><svg
+                    xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg> Buscar</button>
+        </div>
+    </form>
+</div>
+
+<div>
+    {{#each usersFound}}
+    <div class="user-container">
+        <div id="user-header">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>{{this.name}}</p>
+            <p>E-mail: {{this.email}}</p>
+            <div class="task-buttons">
+                <form action="/addFriend" method="post">
+                    <input type="hidden" name="userEmail" value="{{this.email}}">
+                    <button id="edit-button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                            <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path
+                                d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+                        </svg>
+                        Adicionar Amigo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+    <div class="separator"></div>
+
+    {{#each friends}}
+    <div class="user-container">
+        <div id="user-header">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>{{this.nome}}</p>
+            <p>E-mail: {{this.email}}</p>
+            <div class="task-buttons">
+                <form action="/removeFriend" method="post">
+                    <input type="hidden" name="userEmail" value="{{this.email}}">
+                    <button id="edit-button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            class="bi bi-person-fill-x" viewBox="0 0 16 16">
+                            <path
+                                d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+                            <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m-.646-4.854.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 0 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 .708-.708" />
+                        </svg>
+                        Remover Amigo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+</div>

@@ -5,7 +5,7 @@ const userAccountController = require('../controllers/userAccountPageController'
 const homeController = require('../controllers/homeController');
 const loginController = require('../controllers/loginController');
 const {checkAuth} = require('../helpers/checkAuth');
-const teamsController = require('../controllers/teamsController');
+const friendsController = require('../controllers/friendsController');
 
 router.get('/', loginController.loadPage);
 router.post('/login', loginController.validateLogin);
@@ -18,19 +18,12 @@ router.post('/addTask', checkAuth, homeController.addTask);
 router.post('/editTask', checkAuth, homeController.editTask);
 router.post('/deleteTask', homeController.deleteTask);
 
-router.get('/teams', checkAuth,  teamsController);
-// Rota para renderizar a página de conta do usuário
-// router.get('/account', checkAuth, userAccountController);
+router.get('/friends', checkAuth, friendsController.loadPage);
+router.post('/search', checkAuth, friendsController.search);
+router.post('/addFriend', checkAuth, friendsController.addFriend);
+router.post('/removeFriend', checkAuth, friendsController.deleteFriendByEmail);
 
-// Rota para a página principal
-router.route('/account')
-  .get(checkAuth, userAccountController.main)
-  .post(checkAuth, userAccountController.updateUserInformation);
-
-
-
-
-
+router.get('/account', checkAuth,  userAccountController);
 
 
 module.exports = router;  

@@ -49,7 +49,7 @@ module.exports = class UserController {
           }
   
           const passwordMatch = await verifyPassword(userData.password, queryResult.userPassword);
-  
+
           if (passwordMatch) {
               req.session.userid = queryResult.userId;
               req.session.save(() => {

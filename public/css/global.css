@@ -22,6 +22,7 @@ body {
     font-weight: 100;
     color: rgba(255, 255, 255, 1);
     margin: 0;
+	background-color: #ffffff;
 
  
 }
@@ -46,6 +47,7 @@ p {
 span {
 	font-size: 12px;
 }
+
 
 a {
 	color: #333;
