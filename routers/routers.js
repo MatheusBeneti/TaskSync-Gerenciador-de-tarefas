@@ -23,7 +23,7 @@ router.post('/search', checkAuth, friendsController.search);
 router.post('/addFriend', checkAuth, friendsController.addFriend);
 router.post('/removeFriend', checkAuth, friendsController.deleteFriendByEmail);
 
-router.get('/account', checkAuth,  userAccountController);
+router.get('/account', checkAuth,  userAccountController.main);
 
 
 module.exports = router;  

@@ -89,6 +89,7 @@ module.exports = class dbInteractions {
             throw error;
         }
     }
+    
     async updateUser(userId, updatedUser) {
         try {
             const userRef = db.collection('users').doc(userId);
