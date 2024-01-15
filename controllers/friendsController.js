@@ -61,4 +61,40 @@ module.exports = class friendsController {
 
         res.redirect('/friends');
     }
+
+    static async deleteFriendByEmail(req, res) {
+        try {
+            const userId = req.session.userid;
+            const friendEmail = req.body.userEmail;
+            
+            console.log("fried: ",friendEmail);
+
+            // Verificar se o e-mail do amigo é válido
+            if (!friendEmail) {
+                return res.status(400).json({ error: 'O e-mail do amigo é necessário para excluir o amigo.' });
+            }
+    
+            // Verificar se o amigo com o e-mail fornecido existe
+            const friendId = await dbInteractions.getUserIdByEmail(friendEmail);
+    
+            if (!friendId) {
+                return res.status(404).json({ error: 'Amigo não encontrado com o e-mail fornecido.' });
+            }
+    
+            // Excluir o amigo
+            const deletionResult = await dbInteractions.deleteFriend(userId, friendId);
+    
+            if (!deletionResult) {
+                return res.status(404).json({ error: 'Falha ao excluir o amigo.' });
+            }
+    
+            // Amigo excluído com sucesso
+            res.status(200).json({ success: true, message: 'Amigo excluído com sucesso.' });
+        } catch (error) {
+            console.error('Erro ao excluir amigo:', error);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+        }
+    }
+    
+    
 };

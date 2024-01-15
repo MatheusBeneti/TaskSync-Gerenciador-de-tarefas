@@ -21,6 +21,7 @@ router.post('/deleteTask', homeController.deleteTask);
 router.get('/friends', checkAuth, friendsController.loadPage);
 router.post('/search', checkAuth, friendsController.search);
 router.post('/addFriend', checkAuth, friendsController.addFriend);
+router.post('/removeFriend', checkAuth, friendsController.deleteFriendByEmail);
 
 router.get('/account', checkAuth,  userAccountController);
 

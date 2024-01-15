@@ -148,8 +148,9 @@ module.exports = class dbInteractions {
         }
     }
     
-    
-    
+    async deleteFriend(userId, friendEmail) {
+
+    }
 
     async getUsersByName(userName) {
         try {
@@ -214,6 +215,21 @@ module.exports = class dbInteractions {
         }
     }
     
+    async getUserIdByEmail(email) {
+        try {
+            const userQuery = await db.collection('users').where('email', '==', email).get();
+    
+            if (userQuery.empty) {
+                return null; // Retorna null se nenhum usuário for encontrado
+            }
+    
+            // Assumindo que o e-mail é exclusivo, pois estamos usando '=='
+            return userQuery.docs[0].id;
+        } catch (error) {
+            console.error('Erro ao obter ID do usuário por e-mail:', error);
+            throw error;
+        }
+    }
     
 };
 
