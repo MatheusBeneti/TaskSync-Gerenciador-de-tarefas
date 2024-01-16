@@ -134,10 +134,8 @@ module.exports = class dbInteractions {
                 return null;
             }
     
-            // Assumindo que o e-mail é exclusivo, pois estamos usando '=='
             const userData = usersQuery.docs[0].data();
     
-            // Retorna apenas o nome e o email do usuário
             const { nome, email } = userData;
     
             console.log('Dados do usuário encontrado:', { nome, email });
@@ -148,20 +146,19 @@ module.exports = class dbInteractions {
         }
     }
     
-    async removeFriend(userId, friendId) {
+    async removeFriend(userId, friendId) { // Não funciona
         const userRef = db.collection('users').doc(userId);
     
         try {
             const userDoc = await userRef.get();
     
             if (!userDoc.exists) {
-                return null; // Usuário não encontrado
+                return null; 
             }
     
             const userData = userDoc.data();
     
     
-            // Remove o friendId da lista de amigos
             userData.friends = userData.friends.filter(id => id !== friendId);
     
             // Atualiza o documento sem a necessidade de transação
@@ -183,12 +180,10 @@ module.exports = class dbInteractions {
             const usersQuery = await db.collection('users').where('nome', '==', userName).get();
             
             if (usersQuery.empty) {
-                // Caso não haja nenhum usuário com o nome fornecido
                 console.log('Nenhum usuário encontrado com o nome:', userName);
                 return [];
             }
-    
-            // Se houver usuários com o nome fornecido, criar um novo objeto com informações específicas
+
             const usersList = usersQuery.docs.map(doc => {
                 const userData = doc.data();
                 return {

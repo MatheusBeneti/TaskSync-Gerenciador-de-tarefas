@@ -57,7 +57,7 @@ module.exports = class friendsController {
         const userEmailTarget = req.body.userEmail;
         const userId = req.session.userid;
 
-        dbInteractions.addFriend(userId, userEmailTarget);
+        await dbInteractions.addFriend(userId, userEmailTarget);
 
         res.redirect('/friends');
     }
@@ -97,6 +97,4 @@ module.exports = class friendsController {
             res.status(500).json({ error: 'Erro interno do servidor' });
         }
     }
-    
-    
 };

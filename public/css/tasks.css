@@ -38,6 +38,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    height: 50px;
 }
 
 /* Estilo quando o mouse passa por cima */

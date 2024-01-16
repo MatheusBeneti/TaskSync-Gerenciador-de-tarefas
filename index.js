@@ -41,14 +41,10 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
-// usar bcrpyt para criptografar a senha FEITO!
+
 // usar validações no front e no back para inserir dados no banco de dados
-// Servidor encerra quando acessa uma rota sem estar logado FEITO!
-// Email tem que ser unico, implementar validações FEITO!
-// formatar data quando ela vem do firebase ou quando vai FEITO!
 // adicionar nova task sem preecher o modal buga 
-// Adicionar modal para editar task
-// implementar enviar tarefa
+// implementar enviar tarefa FEITO
 
 
 
