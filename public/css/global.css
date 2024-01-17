@@ -6,6 +6,10 @@
 	overflow: hidden;
 }
 
+html{
+	background-color: #131b23;
+}
+
 body {
 
 	display: flex;
@@ -22,9 +26,6 @@ body {
     font-weight: 100;
     color: rgba(255, 255, 255, 1);
     margin: 0;
-	background-color: #ffffff;
-
- 
 }
 
 h1 {
