@@ -17,7 +17,7 @@ Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em desenvolvimento como
   - O motor de template Handlebars é empregado para criar páginas dinâmicas de forma fácil e eficiente, garantindo uma renderização rápida e flexível.
 
 - **Colaboração em Equipe:**
-  - Além de gerenciar tarefas pessoais, os usuários podem criar e participar de equipes, onde as tarefas podem ser atribuídas a membros específicos. Isso facilita a colaboração e a distribuição eficiente de responsabilidades.
+  - Além de gerenciar tarefas pessoais, os usuários podem adicionar amigos, onde as tarefas podem ser atribuídas a membros específicos. Isso facilita a colaboração e a distribuição eficiente de responsabilidades entre pessoas.
 
 ## Porque?
 
