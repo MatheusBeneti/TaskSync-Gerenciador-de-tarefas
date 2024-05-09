@@ -1,4 +1,4 @@
-# Gerenciador de Tarefas com Firebase (Projeto de Estudo - Em Desenvolvimento)
+# Gerenciador de Tarefas (Projeto de Estudo - Em Desenvolvimento)
 
 Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em desenvolvimento como parte de um projeto de estudo. Este projeto oferece uma maneira de acompanhar e organizar tarefas diárias.
 
