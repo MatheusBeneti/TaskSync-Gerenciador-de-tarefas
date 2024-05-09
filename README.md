@@ -1,6 +1,6 @@
 # Gerenciador de Tarefas com Firebase (Projeto de Estudo - Em Desenvolvimento)
 
-Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em constante desenvolvimento como parte de um projeto de estudo. Este projeto oferece uma maneira eficaz e intuitiva de acompanhar e organizar tarefas diárias, incorporando recursos avançados para melhorar a colaboração em equipe.
+Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em desenvolvimento como parte de um projeto de estudo. Este projeto oferece uma maneira de acompanhar e organizar tarefas diárias.
 
 ## Recursos Principais:
 
@@ -19,25 +19,6 @@ Bem-vindo ao Gerenciador de Tarefas, uma aplicação web em constante desenvolvi
 - **Colaboração em Equipe:**
   - Além de gerenciar tarefas pessoais, os usuários podem criar e participar de equipes, onde as tarefas podem ser atribuídas a membros específicos. Isso facilita a colaboração e a distribuição eficiente de responsabilidades.
 
-### English Version:
+## Porque?
 
-# Task Manager with Firebase (Study Project - In Development)
-
-Welcome to the Task Manager, a web application in constant development as part of a study project. This project offers an effective and intuitive way to track and organize daily tasks, incorporating advanced features to enhance team collaboration.
-
-## Key Features:
-
-- **User Authentication:**
-  - Users can create accounts and securely log in, ensuring a personalized experience and the ability to save their tasks.
-
-- **Firebase Storage:**
-  - We use Firebase as our real-time database, enabling persistence of user tasks and instant synchronization across all devices.
-
-- **Express and Node.js:**
-  - The application is built with the Express framework and Node.js, providing a robust and efficient environment for web application development.
-
-- **Handlebars:**
-  - The Handlebars template engine is used to create dynamic pages easily and efficiently, ensuring fast and flexible rendering.
-
-- **Team Collaboration:**
-  - In addition to managing personal tasks, users can create and join teams where tasks can be assigned to specific members. This facilitates collaboration and efficient distribution of responsibilities.
+O objetivo primordial do projeto foi aplicar os conhecimentos adquiridos em Node.js no desenvolvimento do back-end, bem como explorar a interação desse back-end com um banco de dados NoSQL e sua integração com o front-end. Além disso, durante o desenvolvimento, foram investigados e implementados conceitos como autenticação de usuários, criação de contas e gestão de sessões. O projeto também proporcionou uma compreensão mais profunda dos princípios da arquitetura MVC e da definição de rotas, o que facilitou substancialmente a posterior implementação em dois outros projetos que fazem uso de APIs.
