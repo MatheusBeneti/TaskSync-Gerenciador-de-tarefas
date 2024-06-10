@@ -7,7 +7,9 @@ const loginController = require('../controllers/loginController');
 const {checkAuth} = require('../helpers/checkAuth');
 const friendsController = require('../controllers/friendsController');
 
-router.get('/', loginController.loadPage);
+router.get('/', (req, res)=>{
+    res.send("rondando")
+});
 router.post('/login', loginController.validateLogin);
 router.post('/newAccount', loginController.validateNewAccount);
 router.get('/logout', loginController.logout);
