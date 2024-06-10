@@ -31,7 +31,8 @@ async function hashPassword(password) {
 
 module.exports = class UserController {
     static loadPage = (req, res) => {
-        res.render('login', { layout: false });
+        res.send("login page")
+        //res.render('login', { layout: false });
     }
 
     static validateLogin = async (req, res) => {
