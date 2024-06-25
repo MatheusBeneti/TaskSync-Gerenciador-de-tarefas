@@ -70,6 +70,10 @@ cadastrarButton.addEventListener('click', () => {
     const nome = nomeInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
+    const celular = celularInput.value;
+    const empresa = empresaInput.value;
+    const pais = paisInput.value;
+    const dataNascimento = dataNascimentoInput.value;
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -79,6 +83,10 @@ cadastrarButton.addEventListener('click', () => {
                 uid: user.uid,
                 nome: nome,
                 email: email,
+                celular: celular,
+                empresa: empresa,
+                pais: pais,
+                dataNascimento: dataNascimento
                 // outras informações que você deseja armazenar
             };
 
@@ -110,3 +118,5 @@ entrarButton.addEventListener('click', () => {
             console.error('Erro ao fazer login:', error);
         });
 });
+
+
