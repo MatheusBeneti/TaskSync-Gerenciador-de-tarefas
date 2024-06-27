@@ -1,33 +1,20 @@
 const DbInteractions = require('../models/dbInteractions.js');
 const dbInteractions = new DbInteractions(); 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const crypto = require('crypto');
 
-async function hashPassword(password) {
-    try {
-      // Generate a salt
-      const salt = await bcrypt.genSalt(saltRounds);
-  
-      // Hash the password with the salt
-      const hash = await bcrypt.hash(password, salt);
-  
-      return hash;
-    } catch (error) {
-      throw error;
-    }
-  }
-  
-  async function verifyPassword(userPassword, storedHash) {
-    try {
+function hashPassword(password) {
+    const salt = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    return {
+        salt: salt,
+        hash: hash
+    };
+}
 
-      const result = await bcrypt.compare(userPassword, storedHash);
-  
-      return result;
-    } catch (error) {
-      throw error;
-    }
-  }
-
+function verifyPassword(password, storedHash, storedSalt) {
+    const hash = crypto.pbkdf2Sync(password, storedSalt, 1000, 64, 'sha512').toString('hex');
+    return hash === storedHash;
+}
 
 module.exports = class UserController {
     static loadPage = (req, res) => {
@@ -35,75 +22,61 @@ module.exports = class UserController {
     }
 
     static validateLogin = async (req, res) => {
-      const userData = req.body;
-  
-      try {
-          const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
-  
-          console.log('queryResult:', queryResult);
-  
-          if (!queryResult) {
-              console.log('User not found');
-              // Implementar mensagem de erro no front-end
-              return res.redirect('/');
-          }
-  
-          const passwordMatch = await verifyPassword(userData.password, queryResult.userPassword);
+        const userData = req.body;
 
-          if (passwordMatch) {
-              req.session.userid = queryResult.userId;
-              req.session.save(() => {
-                  res.redirect('/home');
-              });
-          } else {
-              console.log('Incorrect password');
-              // Implementar mensagem de erro no front-end
-              res.redirect('/');
-          }
-  
-      } catch (error) {
-          console.error('Error during login validation:', error);
-          res.status(500).send('Internal Server Error');
-      }
-  };
-  
-  
-    
+        try {
+            const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
+
+            if (!queryResult) {
+                console.log('User not found');
+                return res.redirect('/');
+            }
+
+            const passwordMatch = verifyPassword(userData.password, queryResult.userPassword, queryResult.salt);
+
+            if (passwordMatch) {
+                req.session.userid = queryResult.userId;
+                req.session.save(() => {
+                    res.redirect('/home');
+                });
+            } else {
+                console.log('Incorrect password');
+                res.redirect('/');
+            }
+
+        } catch (error) {
+            console.error('Error during login validation:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    };
 
     static validateNewAccount = async (req, res) => {
         const userData = req.body;
-      
+
         try {
+            const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
 
-          const queryResult = await dbInteractions.getUserIdAndPassword(userData.email);
+            if (queryResult !== null) {
+                res.redirect('/');
+                console.log('User exists');
+            } else {
+                const { salt, hash } = hashPassword(userData.password);
+                const userId = await dbInteractions.addNewUser(userData.name, userData.email, hash, salt);
 
-          if(queryResult != null) {
-            res.redirect('/');
-            console.log('User existe');
-            //implementar flash message
-          }
-          else{
-            const hashedPassword = await hashPassword(userData.password);
-        
-            const userId = await dbInteractions.addNewUser(userData.name, userData.email, hashedPassword);
-        
-            req.session.userid = userId;
-            req.session.save(() => {
-              res.redirect('/home');
-            });
-          }
+                req.session.userid = userId;
+                req.session.save(() => {
+                    res.redirect('/home');
+                });
+            }
         } catch (error) {
-          console.error('Error:', error);
-          res.status(500).send('Internal Server Error');
+            console.error('Error:', error);
+            res.status(500).send('Internal Server Error');
         }
-      };
+    };
 
     static logout = (req, res) => {
         req.session.destroy(() => {
-            res.redirect('/')
-        })
+            res.redirect('/');
+        });
     }
 }
-
-
-
